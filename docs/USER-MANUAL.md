@@ -94,7 +94,7 @@ Both move through the available rhythmic divisions.
 
 ### Selective RANDOM
 
-![RAND — HITS and ROTATE selected on A03](images/rand-selection-force-1.2.4.png)
+![RAND — HUMANIZE, STEPS and HITS selected on A03](images/rand-selection-force-1.2.5.png)
 
 Keep what you like. Let chance explore the rest.
 
@@ -104,7 +104,7 @@ Tap the control areas you want to vary. They turn **green**; their values stay u
 
 Press **RAND** again to apply the randomization. Only selected parameters change, then selection closes.
 
-All eight LINE controls are available. Here, only HITS and ROTATE are selected.
+All eight LINE controls are available. Here, HUMANIZE, STEPS and HITS are selected.
 
 With nothing selected, nothing changes. Choosing another lane or switching LINE/EDIT cancels selection.
 

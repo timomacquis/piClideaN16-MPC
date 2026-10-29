@@ -13,8 +13,8 @@ be9ce99605ac6e8ee4c4d0b0c2741ac450ed3933602c300bc98c80cbb8c8b411  docs/ENGINE.md
 0afb800ef7dd3ad0c0d53149cd45477ea15262c535f47c3086a9b3acb43eadd6  docs/INSTALLATION.md
 017885b2a253ca55661cfe3f1abd6b170db670a2906a48e87925286fdb2acbe7  docs/RELEASE-NOTES.md
 07be980773449c969bdad9950c15da44460086d32178c40bba8b26aa0146cfbe  docs/TOOLCHAIN.json
-2fee9163b1cb8aa4a9d208d8820779d91961ee1ece368a8ee21968301a41c4f9  docs/USER-MANUAL.html
-d175c6f3c48725b0ec718a22777b5b16acb6e9aee20093ca21489c3478fad7f6  docs/USER-MANUAL.md
+cf473755d5e20966ebad155f90189d60cc3815277835978248566c812b7b6cf4  docs/USER-MANUAL.html
+785a4f6b1861772ece8f54a946244eb53995fc4a2eafcdbedd7476fe3eca00a2  docs/USER-MANUAL.md
 e5c3f3c5281c23cf1ce4d3d14d19372681cff4abde78285de8bab87ab56521ab  docs/images/activity.png
 688a3427c57630a4d0f43b73b93f1b1c1a233b8767837d4f2093a3c86a28b040  docs/images/config-1.2.3-offline.png
 9d7d27da50b43f59f0f58b70140ed18988870f0858a84af5aebb5bc2c559f66e  docs/images/config-force-1.2.4.png
@@ -34,6 +34,7 @@ cf6adf098383a3b9718df4a5971ca6c63a11c4aa0eec8418830caa1e5360a414  docs/images/pi
 b658e6bad5967559bf9eb31abca3f1398b4e4676dd6453545855ad113b699c5f  docs/images/rand-selection-force-1.2.0.png
 52d899fa1507037b1e34a8615959236b45b684b189750dc87fbfca53c2705705  docs/images/rand-selection-force-1.2.2.png
 2b812ee632c06ba9ad79595b44e0ee15e1ac966938ccbee0248fca56f73b428a  docs/images/rand-selection-force-1.2.4.png
+30c1742f78d842d95b8e5768d277835f8abc50fba2e5715cb2d20402c209b669  docs/images/rand-selection-force-1.2.5.png
 b24d5753015728fff9d7a8ecb15e15572a556f7c475f5568ed19fee1f1ac1203  docs/images/setup-force-1.1.4.png
 89a6fd3115533ee2161f4e258203acdebd4e9b5276d0e6963dcb703b8a1d779e  docs/images/setup-hold-force-1.2.2.png
 aae5a3e6515baa5276bfa2678cf5d4e0debe75cb63f988287d667b257f2fe6df  docs/images/setup.png
