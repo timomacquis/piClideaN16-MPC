@@ -1,6 +1,6 @@
 """Generate five native MPC pages for the sixteen-lane sequencer."""
 from pathlib import Path
-import json,zipfile,copy,hashlib,math,shutil,sys,re
+import json,zipfile,copy,hashlib,math,shutil,sys,re,os
 from functools import lru_cache
 from PIL import Image,ImageDraw,ImageFont
 from project_config import FOLDER, SKIN_IDENTIFIER, VERSION
@@ -434,6 +434,29 @@ for name,children in pages:
   if x<0 or y<0 or w<=0 or h<=0 or x+w>1280 or y+h>628:raise ValueError('Control outside native content: '+control['componentData']['name'])
  local(name,children)
 D['tabs']=[dict(version=3,tabName=name,fnKeyIndex=i,fnKeySubIndex=0,qlinkBoundsData=['0 0 0 0'],componentName=name,initialSize='0 0 1280 628',scale=1.) for i,(name,_) in enumerate(pages)]
+# Gen2 (MPC Live III) draws an Image component as a blank box when its bitmap is smaller than about 5400 px of area
+# (measured 2026-10-28: 5120 px fails, 5520 px draws; Button images are not affected). MPC clips an oversized Image to
+# its bounds instead of scaling it, so such images are grown to a canvas of at least PICN_SKIN_MIN_IMAGE_AREA px with
+# the artwork kept at the top left. Off by default so the Gen1/Force skin stays byte-identical.
+MIN_IMAGE_AREA=int(os.environ.get('PICN_SKIN_MIN_IMAGE_AREA','0'))
+if MIN_IMAGE_AREA:
+ grown={}
+ def grow(name):
+  if name not in grown:
+   im=Image.open(A/name);w,h=im.size
+   if w*h>=MIN_IMAGE_AREA:grown[name]=name
+   else:
+    pw=max(w,80);ph=max(h,-(-MIN_IMAGE_AREA//pw));fill=(0,0,0,0) if im.mode=='RGBA' else im.getpixel((0,0))
+    canvas=Image.new(im.mode,(pw,ph),fill);canvas.paste(im,(0,0));grown[name]='g_'+name;canvas.save(A/grown[name])
+  return grown[name]
+ for _d in defs:
+  for _c in _d['value']['componentsData']:
+   _cd=_c['componentData']
+   if _cd['type']=='Image' and _cd['data'].get('image'):_cd['data']['image']=grow(_cd['data']['image'])
+ _json=json.dumps(J,indent=2)
+ for _old,_new in grown.items():
+  if _old!=_new and f'"{_old}"' not in _json:(A/_old).unlink()
+ print('Grew',sum(1 for o,n in grown.items() if o!=n),'small Image bitmaps to',MIN_IMAGE_AREA,'px minimum')
 (A/'TUI.json').write_text(json.dumps(J,indent=2)+'\n')
 for filename in ['Q-Links.json','Q-Links - 8by1.json']:
  q=json.loads(z.read('Plugin Skins/'+filename));template=q['Screen Mode Q-Links']['map'][0];rows=[]

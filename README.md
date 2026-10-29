@@ -49,6 +49,8 @@ The plugin generates MIDI only. Use a separate Drum Track or drum instrument to 
 
 Install [piClideaN-MPC-1.2.5-armv7.zip](Installation/piClideaN-MPC-1.2.5-armv7.zip) with a compatible portable-package installer. See [Installation and removal](docs/INSTALLATION.md).
 
+MPC Gen2 (Live III and kin, aarch64): install [piClideaN-MPC-1.2.4-aarch64.zip](Installation/piClideaN-MPC-1.2.4-aarch64.zip). See [Installation (Gen2)](docs/INSTALLATION-GEN2.md).
+
 ## Documentation
 
 - [User manual](docs/USER-MANUAL.md) · [Standalone illustrated manual](docs/USER-MANUAL.html)
