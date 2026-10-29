@@ -1,0 +1,10 @@
+/* Scale UI tests, no MIDI hardware access. */
+#define main existing_mod_tests_main
+#include "mod_engine_test.c"
+#undef main
+int main(void){Engine *e=fresh(),*t=fresh();char b[64],state[32768];int notes[16];for(int scale=0;scale<16;scale++){assert(scale_notes(scale,36,notes));for(int i=1;i<16;i++)assert(notes[i]>notes[i-1]);}assert(!scale_notes(1,127,notes));assert(scale_notes(0,127,notes));assert(!scale_notes(-1,36,notes));
+for(int i=0;i<128;i++){assert(note_display(i,b,sizeof b)>0);}note_display(36,b,sizeof b);assert(!strcmp(b,"36 · C1"));note_display(0,b,sizeof b);assert(!strcmp(b,"0 · C-2"));note_display(127,b,sizeof b);assert(!strcmp(b,"127 · G8"));
+Lane before[16];memcpy(before,e->lane,sizeof before);put(e,"choose_sound",6);put(e,"edit_row",36);assert(!memcmp(before,e->lane,sizeof before));put(e,"apply_mapping",0);assert(!memcmp(before,e->lane,sizeof before));put(e,"apply_mapping",1);int expected[]={36,39,41,43,46,48,51,53,55,58,60,63,65,67,70,72};for(int i=0;i<16;i++){assert(e->lane[i].f[9]==expected[i]);before[i].f[8]=before[i].f[9]=expected[i];}assert(!memcmp(before,e->lane,sizeof before));assert(e->visual_ready==0); /* fresh engine cache not yet initialized */
+memcpy(before,e->lane,sizeof before);put(e,"edit_row",127);put(e,"apply_mapping",1);assert(!memcmp(before,e->lane,sizeof before));put(e,"l12_hold",1);put(e,"open_mapping",1);for(int i=0;i<16;i++)assert(e->lane[i].f[9]==36+i);assert(e->lane[12].hold&&e->scale_choice==0&&e->scale_start==36);put(e,"choose_sound",2);put(e,"edit_row",40);put(e,"apply_mapping",1);assert(write_evolution(e,state,sizeof state)>0&&read_evolution(t,state));for(int i=0;i<16;i++)assert(t->lane[i].f[9]==e->lane[i].f[9]);
+visual_snapshot(e,0,1);char key[64];while(mpc_engine_changed(e,key,sizeof key)>0){}put(e,"open_mapping",1);assert(e->visual_ready);visual_snapshot(e,2048,0);while(mpc_engine_changed(e,key,sizeof key)>0)assert(key[0]!='g');
+done(e);done(t);puts("PASS all scales / Force note names / deferred APPLY / atomic overflow rejection / RESET / unchanged musical fields / state roundtrip / no global visual invalidation");return 0;}

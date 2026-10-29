@@ -1,4 +1,4 @@
-"""Generate the candidate model. All runtime identifiers and paths are ASCII."""
+"""Generate the parameter model. All runtime identifiers and paths are ASCII."""
 from pathlib import Path
 import json
 from project_config import DISPLAY_NAME
@@ -19,7 +19,7 @@ choice('bank','Bank',list('ABCDEFGH'),refresh_display=True)
 add('selected_step','Selected step',0,31,0)
 add('rhythm_choice','Rhythm',0,5,0,dynamic_display=True)
 add('dialog','Dialog',0,6,0,poll=False)
-add('edit_row','Mapping row',0,7,0)
+add('edit_row','START',0,127,36,dynamic_display=True)
 choice('map_sound','Sound',sounds,refresh_display=True)
 for k in ['open_rhythm','open_mapping','open_target','open_bank','close','apply_rhythm','apply_mapping','randomize','half','double']:
  trig(k,k.replace('_',' ').upper(),refresh_display=k not in ('randomize','half','double','open_rhythm','apply_rhythm'))
@@ -48,14 +48,14 @@ for i in range(8):
 for k,n in [('line_label','Selected sound'),('target_label','MIDI NOTE'),('status','MIDI status'),('step_label','Selection'),('mapping_label','PAD'),('port_label','MODE')]+[(f'name{i}',f'Lane {i+1} sound') for i in range(8)]:
  add(k,n,display='string',poll=k=='status')
 for i in range(32):add(f'preview{i}',f'Rhythm preview {i+1}',0,4,0,poll=False)
-# Append only: preserve every published candidate.1 index, including retired arrows.
+# Append only: preserve every published parameter index, including retired arrows.
 choice('line_select','Selected rhythm lane',[str(i+1) for i in range(8)],refresh_display=True)
 add('pattern_base','Pattern base visible',0,1,1,poll=False)
 add('setup_base','Setup base visible',0,1,1,poll=False)
 for i in range(8):add(f'line_on{i}',f'Lane {i+1} selected',0,1,int(i==0),poll=False)
-choice('choose_target','Choose target',['DRUM INSTRUMENT','DRUM TRACK'],default=1,refresh_display=True)
-choice('choose_bank','Choose bank',list('ABCDEFGH'),refresh_display=True)
-choice('choose_sound','Choose sound',sounds,refresh_display=True)
+add('choose_target','Scale pending fields',0,3,0,poll=False)
+trig('choose_bank','Open scales',refresh_display=False,hold_ms=100)
+choice('choose_sound','SCALES',['DRUM','Major','Natural minor','Harmonic minor','Melodic minor','Major pentatonic','Minor pentatonic','Blues','Chromatic','Ionian mode','Dorian mode','Phrygian mode','Lydian mode','Mixolydian mode','Aeolian mode','Locrian mode'])
 # Evolution: append only; legacy indices and ranges stay unchanged.
 choice('edit_view','Pattern view',['LINE','EDIT'],default=1,refresh_display=True)
 add('edit_tool','Step tool',0,1,0,dynamic_display=True)
@@ -133,8 +133,16 @@ for j in range(2):
   elif j==0 and k==31:add('mod_slot','Selected MOD slot',0,3,0,poll=False)
   elif j==1 and k==31:add('mod_tempo','Preview window',0,1000,120,poll=False,dynamic_display=True)
   else:add(f'mod_trace{j}_{k}',f'LFO {j+1} static segment {k+1}',0,1023,528,poll=False)
+for param in P:
+ if __import__('re').fullmatch(r'l[0-9]+_dnote',param['key']):param['dynamic_display']=True
+ if param['key'] in ('open_mapping','apply_mapping'):param['refresh_display']=False;param['hold_ms']=100
+for param in P:
+ if param['key'].startswith(('mod0_','mod1_','mod_choose')) or param['key'] in ['mod_pad','open_rhythm','open_target','open_bank','close','map_sound'] or param['key'].startswith('open_sound'):param['refresh_display']=False
+ if param['key']=='can_undo':param.update(min=0,max=7,poll=False)
+ if param['key']=='map_sound':param.pop('options',None);param.update(min=0,max=7,poll=False)
+ if param['key']=='close':param['hold_ms']=100
 (B/'params.json').write_text(json.dumps(P,ensure_ascii=True,indent=2)+'\n')
-(B/'vst.json').write_text(json.dumps(dict(name=DISPLAY_NAME,vendor='Timo',uid='PiCN',version=10204,so='piclidean_mpc.so',params='params.json',custom_skin=True,cc=False,nrpn=False,defines={'HAS_SONG_POS':1,'HAS_DISPLAY_REV':0,'DISPLAY_REV_NO_UPDATE':1,'PARAM_TEXT_MAX':64,'PICN_HOST_CONTEXT':1,'MPC_CHUNK_BYTES':32768}),indent=2)+'\n')
+(B/'vst.json').write_text(json.dumps(dict(name=DISPLAY_NAME,vendor='Timo',uid='PiCN',version=10205,so='piclidean_mpc.so',params='params.json',custom_skin=True,cc=False,nrpn=False,defines={'HAS_SONG_POS':1,'HAS_DISPLAY_REV':0,'DISPLAY_REV_NO_UPDATE':1,'PARAM_TEXT_MAX':64,'PICN_HOST_CONTEXT':1,'MPC_CHUNK_BYTES':32768}),indent=2)+'\n')
 ref=json.loads((B/'reference/DRUMTRACK-REFERENCE.json').read_text())
 (B/'src/drum_notes.h').write_text('/* Local reference-project mapping, not universal hardware discovery. */\nstatic const unsigned char drum_notes[128]={'+','.join(map(str,ref['notes']))+'};\n')
 (B/'build/reports').mkdir(parents=True,exist_ok=True)

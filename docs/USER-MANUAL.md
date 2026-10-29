@@ -1,6 +1,6 @@
 # πClideaN16 MPC — User Manual
 
-Version 1.2.4
+Version 1.2.5
 
 ## 1. Overview
 
@@ -111,6 +111,16 @@ Q-Link editing, 1/2 and x2 pause during selection.
 A new Steps value respects unselected Hits and Rotate. If RAND changes Steps, Hits or Rotate, manual trigger overrides are cleared; step expression is retained.
 
 A random result can equal the previous value.
+
+### Rd ALL — sixteen fresh patterns
+
+Tap **Rd ALL**, then **APPLY** in the confirmation panel. **CANCEL** keeps everything unchanged.
+
+Steps, Hits, Rotate and Division are randomized on all sixteen lanes. Step customizations are cleared.
+
+Velocity and Probability return to 100, Humanize to 0 and Gate to 50. Lanes return to GATE; Solo, auto-rotation and MOD reset.
+
+**MUTE states**, **MIDI pitches** and the **applied scale** are preserved.
 
 ## 4. PATTERN — EDIT
 
@@ -247,6 +257,8 @@ Muted lane buttons are dimmed. Selecting one does not unmute it; its selection b
 
 A small dot on a step or expression control marks customization. On a lane button, it marks an enabled modulation destination.
 
+Tap **MODE** to open the playback-direction panel. Select a mode to apply it and close the panel; **CANCEL** keeps the current mode.
+
 ## 7. 01 - 08 / 09 - 16 — playback and rotation
 
 ![Lanes 01–08 — A07 selected, Auto Rotate enabled](images/tracks-force-1.2.4.png)
@@ -287,9 +299,21 @@ A cycle follows the playback mode, not necessarily a host bar. Step expression m
 
 Give each lane its sound and choose how it holds a note.
 
-**MIDI NOTE** sets the output note: 0–127.
+**MIDI NOTE** sets the output note: 0–127, with its Force note name, for example **36 · C1**.
 
 Tap the button under **MODE** to switch between GATE and HOLD.
+
+### Play a scale
+
+**SCALES** opens a button panel. Choose DRUM, a scale or a mode.
+
+**START** selects a complete starting note: root and octave.
+
+Changed choices turn green. **APPLY** assigns sixteen ascending notes; the pitches stay unchanged until you apply.
+
+**RESET** restores DRUM, notes 36–51, without changing patterns, step customizations or GATE/HOLD.
+
+If sixteen notes exceed the MIDI range, lower START before applying.
 
 ### Short hits: GATE
 

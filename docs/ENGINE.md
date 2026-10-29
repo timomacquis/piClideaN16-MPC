@@ -54,3 +54,9 @@ Numeric display updates retain the approximately 30 Hz cap. Sub-hits closer than
 ## Modulation processing
 
 Four slots each own two oscillators and one unique lane assignment. Disabled and inaudible sources suspend phase. Coefficients and static previews are cached. Note On threshold evaluation uses a bounded event budget and common note ownership so stale Note Off events cannot cut a newly owned note. Parameter modulation is applied to playback values without rewriting stored state. CONFIG uses a single effective note per lane; compatible saved states retain the note active in their stored routing mode.
+
+## Native value updates
+
+Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most 32 from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
+
+Applied scale and root metadata are saved with the project. Newly saved states use a SCALE extension that older plugin versions cannot read; retain a project copy before downgrading.

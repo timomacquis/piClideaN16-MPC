@@ -27,6 +27,7 @@ if result.returncode:raise SystemExit(result.returncode)
 subprocess.run([str(prefix/'bin/arm-linux-gnueabihf-strip'),str(B/'build/piclidean_mpc.so')],env=env,check=True)
 python=os.environ.get('PICN_SKIN_PYTHON',sys.executable)
 script=str(B/'scripts/build_skin.py')
+if python.lower().endswith('.exe') and script.startswith('/mnt/c/'):script='C:/'+script[len('/mnt/c/'):]
 
 subprocess.run([python,script],check=True,cwd=B)
 readelf=prefix/'bin/arm-linux-gnueabihf-readelf';elf=B/'build/piclidean_mpc.so'

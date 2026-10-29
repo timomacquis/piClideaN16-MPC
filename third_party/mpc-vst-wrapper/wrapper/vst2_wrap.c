@@ -164,6 +164,7 @@ typedef struct {
     int nrpn_msb;
     volatile char cc_changed[NPARAMS];   /* set from MIDI CC/NRPN, reported to the host at most every 1024 frames */
     int cc_report;           /* frames until CC-driven changes are reported again */
+    int cc_cursor, cc_delivery_active; /* bounded, fair delivery of pending native values */
     int update_wait;         /* frames until another audioMasterUpdateDisplay may be sent (see housekeeping) */
     int program;             /* NPRESETS: the preset last picked (not in the engine's state; 0 after a reload) */
 #if SAMPLE_ACCURATE
@@ -562,7 +563,7 @@ static void housekeeping(AEffect *e, int32_t n) {
         pthread_mutex_lock(&w->lock);
         /* Port-local sorted lookup: bounded logarithmic lookup for per-step parameters.
          * Preserve upstream notification semantics and its 50 ms display throttle. */
-        for (int k = 0; k < NPARAMS && mpc_engine_changed(w->dsp, key, sizeof key) > 0; k++) {
+        for (int k = 0; k < 32 && mpc_engine_changed(w->dsp, key, sizeof key) > 0; k++) {
             int lo = 0, hi = NPARAMS;
             while (lo < hi) {
                 int mid = lo + (hi - lo) / 2;
@@ -573,17 +574,31 @@ static void housekeeping(AEffect *e, int32_t n) {
                 else {
                     w->last_pos[i] = -1;
                     w->cc_changed[i] = 1;
-                    if (PARAMS[i].nopts > 1) w->need_update_display = 1;
+                    if (PARAMS[i].nopts > 1 && strncmp(PARAMS[i].key, "mod", 3)) w->need_update_display = 1; /* MOD has native value handles; no full-screen rebuild. */
                     break;
                 }
             }
         }
         pthread_mutex_unlock(&w->lock);
     }
-    if ((w->cc_report -= n) <= 0) {
-        w->cc_report = 1024;
-        for (int i = 0; i < NPARAMS; i++)
-            if (w->cc_changed[i]) { w->cc_changed[i] = 0; w->master(&w->fx, audioMasterAutomate, i, 0, 0, get_norm(w, i)); }
+    /* Bound host callbacks in the audio block. Keep pending values coalesced,
+     * and continue bursts in following blocks with a round-robin cursor. */
+    int cc_due = (w->cc_report -= n) <= 0;
+    if (cc_due) w->cc_report = 1024;
+    if (cc_due || w->cc_delivery_active) {
+        int sent = 0, scanned = 0;
+        w->cc_delivery_active = 0;
+        while (scanned < NPARAMS && sent < 32) {
+            int i = w->cc_cursor;
+            w->cc_cursor = (i + 1) % NPARAMS;
+            scanned++;
+            if (w->cc_changed[i]) {
+                w->cc_changed[i] = 0;
+                w->master(&w->fx, audioMasterAutomate, i, 0, 0, get_norm(w, i));
+                sent++;
+            }
+        }
+        if (sent == 32) w->cc_delivery_active = 1;
     }
     /* At most one UpdateDisplay per 50 ms (2205 frames); a request inside that window waits, it is not dropped. MPC rebuilds its
      * parameter screen on each one, so a burst (a held stepper, readouts that change every poll) must not become a rebuild per block. */

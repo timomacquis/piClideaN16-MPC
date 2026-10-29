@@ -64,3 +64,9 @@ A shared 10-pixel radius in native 1280 × 628 coordinates is used for control a
 ## Scoped display notifications
 
 PATTERN lane selection does not invalidate MOD visual caches. MOD context changes retain their own notification path. CONFIG headings use native Name labels backed by existing read-only handles; their indices are unchanged.
+
+## Native value updates
+
+Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most 32 from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
+
+Applied scale and root metadata are saved with the project. Newly saved states use a SCALE extension that older plugin versions cannot read; retain a project copy before downgrading.

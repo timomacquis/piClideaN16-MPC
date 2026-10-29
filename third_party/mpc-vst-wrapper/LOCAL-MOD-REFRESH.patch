@@ -1,0 +1,11 @@
+--- a/wrapper/vst2_wrap.c
++++ b/wrapper/vst2_wrap.c
+@@ -573,7 +573,7 @@
+                 else {
+                     w->last_pos[i] = -1;
+                     w->cc_changed[i] = 1;
+-                    if (PARAMS[i].nopts > 1) w->need_update_display = 1;
++                    if (PARAMS[i].nopts > 1 && strncmp(PARAMS[i].key, "mod", 3)) w->need_update_display = 1; /* MOD has native value handles; no full-screen rebuild. */
+                     break;
+                 }
+             }

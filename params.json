@@ -96,34 +96,22 @@
   },
   {
     "key": "edit_row",
-    "name": "Mapping row",
+    "name": "START",
     "min": 0,
-    "max": 7,
-    "default": 0,
-    "display": "int"
+    "max": 127,
+    "default": 36,
+    "display": "int",
+    "dynamic_display": true
   },
   {
     "key": "map_sound",
     "name": "Sound",
     "min": 0,
-    "max": 1,
+    "max": 7,
     "default": 0,
     "display": "int",
-    "options": [
-      "KICK",
-      "MBRANE",
-      "CL HAT",
-      "OP HAT",
-      "CLAP",
-      "RIM",
-      "CRASH",
-      "RIDE",
-      "X1",
-      "X2",
-      "FM",
-      "CUSTOM"
-    ],
-    "refresh_display": true
+    "refresh_display": false,
+    "poll": false
   },
   {
     "key": "open_rhythm",
@@ -143,7 +131,8 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false,
+    "hold_ms": 100
   },
   {
     "key": "open_target",
@@ -153,7 +142,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "open_bank",
@@ -163,7 +152,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "close",
@@ -173,7 +162,8 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false,
+    "hold_ms": 100
   },
   {
     "key": "apply_rhythm",
@@ -193,7 +183,8 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false,
+    "hold_ms": 100
   },
   {
     "key": "randomize",
@@ -431,7 +422,8 @@
     "max": 127,
     "default": 36,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l0_pad",
@@ -519,7 +511,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l1_steps",
@@ -601,7 +593,8 @@
     "max": 127,
     "default": 37,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l1_pad",
@@ -689,7 +682,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l2_steps",
@@ -771,7 +764,8 @@
     "max": 127,
     "default": 38,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l2_pad",
@@ -859,7 +853,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l3_steps",
@@ -941,7 +935,8 @@
     "max": 127,
     "default": 39,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l3_pad",
@@ -1029,7 +1024,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l4_steps",
@@ -1111,7 +1106,8 @@
     "max": 127,
     "default": 40,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l4_pad",
@@ -1199,7 +1195,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l5_steps",
@@ -1281,7 +1277,8 @@
     "max": 127,
     "default": 41,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l5_pad",
@@ -1369,7 +1366,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l6_steps",
@@ -1451,7 +1448,8 @@
     "max": 127,
     "default": 42,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l6_pad",
@@ -1539,7 +1537,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "l7_steps",
@@ -1621,7 +1619,8 @@
     "max": 127,
     "default": 43,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l7_pad",
@@ -1709,7 +1708,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "step_press0",
@@ -5148,58 +5147,49 @@
   },
   {
     "key": "choose_target",
-    "name": "Choose target",
+    "name": "Scale pending fields",
     "min": 0,
-    "max": 1,
-    "default": 1,
+    "max": 3,
+    "default": 0,
     "display": "int",
-    "options": [
-      "DRUM INSTRUMENT",
-      "DRUM TRACK"
-    ],
-    "refresh_display": true
+    "poll": false
   },
   {
     "key": "choose_bank",
-    "name": "Choose bank",
+    "name": "Open scales",
     "min": 0,
     "max": 1,
     "default": 0,
     "display": "int",
-    "options": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H"
-    ],
-    "refresh_display": true
+    "momentary": true,
+    "refresh_display": false,
+    "hold_ms": 100
   },
   {
     "key": "choose_sound",
-    "name": "Choose sound",
+    "name": "SCALES",
     "min": 0,
     "max": 1,
     "default": 0,
     "display": "int",
     "options": [
-      "KICK",
-      "MBRANE",
-      "CL HAT",
-      "OP HAT",
-      "CLAP",
-      "RIM",
-      "CRASH",
-      "RIDE",
-      "X1",
-      "X2",
-      "FM",
-      "CUSTOM"
-    ],
-    "refresh_display": true
+      "DRUM",
+      "Major",
+      "Natural minor",
+      "Harmonic minor",
+      "Melodic minor",
+      "Major pentatonic",
+      "Minor pentatonic",
+      "Blues",
+      "Chromatic",
+      "Ionian mode",
+      "Dorian mode",
+      "Phrygian mode",
+      "Lydian mode",
+      "Mixolydian mode",
+      "Aeolian mode",
+      "Locrian mode"
+    ]
   },
   {
     "key": "edit_view",
@@ -5339,7 +5329,7 @@
     "key": "can_undo",
     "name": "can_undo",
     "min": 0,
-    "max": 1,
+    "max": 7,
     "default": 0,
     "display": "int",
     "poll": false
@@ -18906,7 +18896,8 @@
     "max": 127,
     "default": 44,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l8_pad",
@@ -20306,7 +20297,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name8",
@@ -20712,7 +20703,8 @@
     "max": 127,
     "default": 45,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l9_pad",
@@ -22112,7 +22104,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name9",
@@ -22518,7 +22510,8 @@
     "max": 127,
     "default": 46,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l10_pad",
@@ -23918,7 +23911,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name10",
@@ -24324,7 +24317,8 @@
     "max": 127,
     "default": 47,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l11_pad",
@@ -25724,7 +25718,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name11",
@@ -26130,7 +26124,8 @@
     "max": 127,
     "default": 48,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l12_pad",
@@ -27530,7 +27525,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name12",
@@ -27936,7 +27931,8 @@
     "max": 127,
     "default": 49,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l13_pad",
@@ -29336,7 +29332,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name13",
@@ -29742,7 +29738,8 @@
     "max": 127,
     "default": 50,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l14_pad",
@@ -31142,7 +31139,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name14",
@@ -31548,7 +31545,8 @@
     "max": 127,
     "default": 51,
     "display": "int",
-    "refresh_display": true
+    "refresh_display": true,
+    "dynamic_display": true
   },
   {
     "key": "l15_pad",
@@ -32948,7 +32946,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "name15",
@@ -33725,7 +33723,7 @@
     "default": 0,
     "display": "int",
     "dynamic_display": false,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod0_wave",
@@ -33744,7 +33742,7 @@
       "RANDOM SMOOTH",
       "FREE CURVE"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod0_sync",
@@ -33757,7 +33755,7 @@
       "HZ",
       "SYNC"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod0_rate",
@@ -33834,7 +33832,7 @@
       "DECAY",
       "NOTE ON"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod0_threshold",
@@ -33934,7 +33932,7 @@
     "default": 0,
     "display": "int",
     "dynamic_display": false,
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod1_wave",
@@ -33953,7 +33951,7 @@
       "RANDOM SMOOTH",
       "FREE CURVE"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod1_sync",
@@ -33966,7 +33964,7 @@
       "HZ",
       "SYNC"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod1_rate",
@@ -34043,7 +34041,7 @@
       "DECAY",
       "NOTE ON"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod1_threshold",
@@ -34287,7 +34285,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true,
+    "refresh_display": false,
     "hold_ms": 100
   },
   {
@@ -34298,7 +34296,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true,
+    "refresh_display": false,
     "hold_ms": 100
   },
   {
@@ -34309,7 +34307,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true,
+    "refresh_display": false,
     "hold_ms": 100
   },
   {
@@ -34320,7 +34318,7 @@
     "default": 0,
     "display": "int",
     "momentary": true,
-    "refresh_display": true,
+    "refresh_display": false,
     "hold_ms": 100
   },
   {
@@ -34349,7 +34347,7 @@
       "A15",
       "A16"
     ],
-    "refresh_display": true
+    "refresh_display": false
   },
   {
     "key": "mod_trace0_0",

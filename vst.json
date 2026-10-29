@@ -2,7 +2,7 @@
   "name": "\u03c0ClideaN MPC",
   "vendor": "Timo",
   "uid": "PiCN",
-  "version": 10204,
+  "version": 10205,
   "so": "piclidean_mpc.so",
   "params": "params.json",
   "custom_skin": true,

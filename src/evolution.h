@@ -110,7 +110,7 @@ static int write_evolution(Engine *e,char *b,int size){int off=0;
  for(int i=0;i<LANES;i++){Lane *l=&e->lane[i];PUT("%d %d %d %d %u %.17g ",l->playmode,l->auto_rotate,l->shift,l->every,l->seed,l->origin);for(int j=0;j<32;j++)for(int k=0;k<5;k++)PUT("%d ",l->values[j][k]);}
  for(int i=0;i<LANES;i++)PUT("%d ",e->lane[i].hold);
  PUT("%d ",e->mod_selected);for(int i=0;i<MOD_SLOTS;i++){PUT("%d %d ",e->mod_pad[i]+1,e->mod[i].mix);for(int j=0;j<2;j++)for(int k=0;k<MOD_FIELDS;k++)PUT("%d ",e->mod[i].osc[j].f[k]);}
- PUT("END");return off;
+ PUT("SCALE %d %d END",e->scale_applied_choice,e->scale_applied_start);return off;
 #undef PUT
 }
 static int read_number(const char **p,double *n){char *end;errno=0;*n=strtod(*p,&end);if(errno||end==*p||!isfinite(*n)||(*end&&*end!=' '))return 0;*p=end;while(**p==' ')(*p)++;return 1;}
@@ -123,5 +123,8 @@ static int read_evolution(Engine *e,const char *value){const char *p=value+6;int
   for(int j=0;j<32;j++)for(int k=0;k<5;k++){if(!read_int(&p,-1,k==0?1:k==1?127:k==2?100:k==3?8:150,&l->values[j][k]))return 0;if((k==1||k==3)&&l->values[j][k]==0)return 0;}}
  if(has_hold)for(int i=0;i<LANES;i++)if(!read_int(&p,0,1,&lanes[i].hold))return 0;
  if(slot_format){if(!read_int(&p,0,MOD_SLOTS-1,&selected_mod))return 0;for(int i=0;i<MOD_SLOTS;i++){int pad;if(!read_int(&p,0,LANES,&pad))return 0;pads[i]=pad-1;for(int n=0;n<i;n++)if(pads[i]>=0&&pads[n]==pads[i])return 0;if(!read_int(&p,-100,100,&mods[i].mix))return 0;for(int j=0;j<2;j++)for(int k=0;k<MOD_FIELDS;k++)if(!read_int(&p,mod_lo[k],mod_hi[k],&mods[i].osc[j].f[k]))return 0;}}
- if(strcmp(p,"END"))return 0;for(int i=count;i<LANES;i++)lanes[i].f[9]=drum_notes[h[3]*16+i];e->selected=h[0];e->mode=h[1];e->channel=0;e->bank=h[3];e->step=h[4];e->rhythm=h[5];e->row=h[6];e->edit_view=view;e->edit_tool=tool;memcpy(e->lane,lanes,sizeof lanes);normalize_config(e);mod_init(e);memcpy(e->mod,mods,sizeof mods);memcpy(e->mod_pad,pads,sizeof pads);e->mod_selected=selected_mod;for(int i=0;i<MOD_SLOTS;i++)mod_coefficients(e,i);e->dialog=0;e->q_valid=0;e->panic=1;e->valid=0;e->visual_ready=0;e->playing=0;for(int i=0;i<LANES;i++){e->reset_at[i]=-1;e->head[i]=-1;e->display_tick[i]=0;e->ui_offset[i]=0;}changed_all(e);return 1;
+ int saved_scale=0,saved_start=36,scale_metadata=!strncmp(p,"SCALE ",6);if(scale_metadata){p+=6;if(!read_int(&p,0,15,&saved_scale)||!read_int(&p,0,127,&saved_start))return 0;}
+ if(strcmp(p,"END"))return 0;
+ if(!scale_metadata&&count==LANES){int candidate[LANES];for(int sc=0;sc<16;sc++){int first=sc?lanes[0].f[h[1]?9:8]:36;if(!scale_notes(sc,first,candidate))continue;int match=1;for(int i=0;i<LANES;i++)if(candidate[i]!=lanes[i].f[h[1]?9:8])match=0;if(match){saved_scale=sc;saved_start=first;break;}}}
+ for(int i=count;i<LANES;i++)lanes[i].f[9]=drum_notes[h[3]*16+i];e->scale_choice=e->scale_applied_choice=saved_scale;e->scale_start=e->scale_applied_start=saved_start;e->scale_ui_pending=7;e->selected=h[0];e->mode=h[1];e->channel=0;e->bank=h[3];e->step=h[4];e->rhythm=h[5];e->row=h[6];e->edit_view=view;e->edit_tool=tool;memcpy(e->lane,lanes,sizeof lanes);normalize_config(e);mod_init(e);memcpy(e->mod,mods,sizeof mods);memcpy(e->mod_pad,pads,sizeof pads);e->mod_selected=selected_mod;for(int i=0;i<MOD_SLOTS;i++)mod_coefficients(e,i);e->dialog=0;e->q_valid=0;e->panic=1;e->valid=0;e->visual_ready=0;e->playing=0;for(int i=0;i<LANES;i++){e->reset_at[i]=-1;e->head[i]=-1;e->display_tick[i]=0;e->ui_offset[i]=0;}changed_all(e);return 1;
 }

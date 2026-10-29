@@ -131,47 +131,57 @@ for i in range(16):
   native['bounds']['acceptsHWFocus']='No';native['bounds']['additionalInvalidatingHandles']=conditions;children.append(native)
  kind=local(tag,children,[action('Q-Link')]);parts.append(placed(kind,'line_select16',x,12+(i//8)*52,w,h))
 parts += [button('edit_view','LINE',20,394,148,46,False,0,2),button('edit_view','EDIT',176,394,148,46,False,1,2)]
-parts += [*toggle('sel_mute','MUTE',488,394,148,46),*toggle('sel_solo','SOLO',644,394,148,46)]
-for control in [button('half','1/2',800,394,148,46),button('double','x2',956,394,148,46),rand_button(1112,394,148,46)]:
- control['bounds']['additionalInvalidatingHandles'].append(gate('edit_view',0,2))
- parts.append(control)
+for view,mutepos,solopos in [(0,332,488),(1,488,644)]:
+ for control in toggle('sel_mute','MUTE',mutepos,394,148,46)+toggle('sel_solo','SOLO',solopos,394,148,46):
+  control['bounds']['additionalInvalidatingHandles'].append(gate('edit_view',view,2));parts.append(control)
+for control in [button('half','1/2',644,394,148,46),button('double','x2',800,394,148,46),rand_button(956,394,148,46),button('open_target','Rd ALL',1112,394,148,46,native_touch=True)]:
+ control['bounds']['additionalInvalidatingHandles'].append(gate('edit_view',0,2));parts.append(control)
 parts += [button('edit_tool','SELECT',800,394,148,46,False,0,2,extra=[gate('edit_view',1,2)]),button('edit_tool','DRAW',956,394,148,46,False,1,2,extra=[gate('edit_view',1,2)]),button('erase_values','ERASE',1112,394,148,46,extra=[gate('edit_view',1,2)])]
 # Opaque display artwork, headers and four controls per scope.
 im,dr=image(1240,264);rounded(dr,(1,1,1238,262),fill=C['oled'],outline='#68736a',width=2,radius=12);dr.line((8,131,1230,131),fill='#68736a',width=1);save('scopes.png',im);parts.append(art('scopes.png',20,120,1240,264))
-im,d=image(299,94,C['oled']);rounded(d,(1,1,297,92),outline='#68736a');save('parameter_box.png',im)
-im,d=image(299,94,C['oled']);rounded(d,(1,1,297,92),outline='#303f36');save('parameter_box_read_only.png',im)
+im,d=image(296,94,C['oled']);rounded(d,(1,1,294,92),outline='#68736a');save('parameter_box.png',im)
+im,d=image(296,94,C['oled']);rounded(d,(1,1,294,92),outline='#303f36');save('parameter_box_read_only.png',im)
 for view,keys in [(0,['sel_'+k for k in ['velocity','prob','humanize','gate','steps','hits','rotate','division']]),(1,['sel_velocity','sel_prob','sel_humanize','sel_gate','step_velocity','step_prob','step_ratchet','step_decay'])]:
  for title,y in [('LINE',120),('STEP' if view else 'STEPS',252)]:
   im,d=image(720,26,C['oled']);text(d,(0,0),title,20,READ_ONLY_TEXT if view and y==120 else C['text']);fn=f'scope_v{view}_{y}.png';save(fn,im);c=art(fn,34,y+4,720,26);c['bounds']['additionalInvalidatingHandles']=[gate('edit_view',view,2)];parts.append(c)
  for n,key in enumerate(keys):
-  x=30+(n%4)*309;y=151+(n//4)*132
+  x=30+(n%4)*308;y=151+(n//4)*132
   read_only=bool(view and n<4)
   colour='ff'+READ_ONLY_TEXT[1:] if read_only else 'ffe8e5d0'
-  children=[art('parameter_box_read_only.png' if read_only else 'parameter_box.png',0,0,299,94),child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='dial_read_only.png' if read_only else 'dial.png',numFrames=127,invert=False,dragOrientation='Vertical',handleName='Data'),9,19,58,58),label(82,0,210,27,20,kind='Name',colour=colour),label(82,27,200,40,34,colour=colour)]
+  children=[art('parameter_box_read_only.png' if read_only else 'parameter_box.png',0,0,296,94),child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='dial_read_only.png' if read_only else 'dial.png',numFrames=127,invert=False,dragOrientation='Vertical',handleName='Data'),9,19,58,58),label(82,11,210,27,20,kind='Name',colour=colour),label(82,38,200,40,34,colour=colour)]
   if read_only:
    for component in children:component['bounds']['acceptsHWFocus']='No'
   kind=local(f'knob_v{view}_{n}',children,None if read_only else [action('Q-Link')],focus=not read_only)
   conditions=[gate('edit_view',view,2)]+([gate('rand_mode',0,2)] if not view else [])
-  component=placed(kind,key,x,y,299,94,conditions)
+  component=placed(kind,key,x,y,296,94,conditions)
   if read_only:component['bounds']['acceptsHWFocus']='No'
   parts.append(component)
   if not view:
    # Mutually exclusive sibling: exactly one touch owner at any given time.
    picked=[]
    for chosen in [0,1]:
-    im,d=image(299,94,C['oled'])
-    rounded(d,(1,1,297,92),fill='#1a3324' if chosen else C['oled'],outline='#65bc7b' if chosen else '#68736a',width=2 if chosen else 1)
+    im,d=image(296,94,C['oled'])
+    rounded(d,(1,1,294,92),fill='#1a3324' if chosen else C['oled'],outline='#65bc7b' if chosen else '#68736a',width=2 if chosen else 1)
     fn=f'rand_pick_box{chosen}.png';save(fn,im)
-    c=art(fn,0,0,299,94);c['bounds']['additionalInvalidatingHandles']=[gate(f'rand_pick{n}',chosen,2)];picked.append(c)
-   # Static dial: selecting a target never edits its value or turns a knob.
-   # Opaque dial uses the same surface as its enclosing state.
+    c=art(fn,0,0,296,94);c['bounds']['additionalInvalidatingHandles']=[gate(f'rand_pick{n}',chosen,2)];picked.append(c)
+   # Same indexed artwork, dimensions and angle as the normal value knob.
+   # Read-only display: parent owns selection; engine rejects sel_* writes in RAND.
    for chosen in [0,1]:
-    im,d=image(58,58,'#1a3324' if chosen else C['oled']);d.ellipse((4,4,54,54),outline='#a0d8ad' if chosen else C['text']);d.line((29,29,39,12),fill='#a0d8ad' if chosen else C['text'],width=2)
-    fn=f'rand_dial{chosen}.png';save(fn,im);c=art(fn,9,19,58,58);c['bounds']['additionalInvalidatingHandles']=[gate(f'rand_pick{n}',chosen,2)];picked.append(c)
-   picked += [label(82,0,210,27,20,handle='Value',kind='Name'),label(82,27,200,40,34,handle='Value')]
+    fn=f'rand_dial_strip{chosen}.png'
+    if not (A/fn).exists():
+     strip=Image.open(A/'dial.png').convert('RGB')
+     if chosen:
+      pixels=strip.load()
+      for yy in range(strip.height):
+       for xx in range(strip.width):
+        pixels[xx,yy]=(26,51,36) if pixels[xx,yy]==tuple(int(C['oled'][i:i+2],16) for i in (1,3,5)) else (160,216,173)
+     save(fn,strip)
+    c=child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=fn,numFrames=127,invert=False,dragOrientation='Vertical',handleName='Value'),9,19,58,58)
+    c['bounds']['acceptsHWFocus']='No';c['bounds']['additionalInvalidatingHandles']=[gate(f'rand_pick{n}',chosen,2)];picked.append(c)
+   picked += [label(82,11,210,27,20,handle='Value',kind='Name'),label(82,38,200,40,34,handle='Value')]
    actions=[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')]
    k=local(f'rand_target{n}',picked,actions,focus=True)
-   parts.append(placed(k,f'rand_toggle{n}',x,y,299,94,[gate('edit_view',0,2),gate('rand_mode',1,2)],maps=[{'key':'Value','value':f'Parameter {I[key]}'}]))
+   parts.append(placed(k,f'rand_toggle{n}',x,y,296,94,[gate('edit_view',0,2),gate('rand_mode',1,2)],maps=[{'key':'Value','value':f'Parameter {I[key]}'}]))
   if view and n>=4:
    im=Image.new('RGBA',(10,10),(0,0,0,0));d=ImageDraw.Draw(im);d.ellipse((2,2,7,7),fill=C['text']);fn='custom_dot.png';save(fn,im);c=art(fn,x+277,y+10,10,10);c['bounds']['additionalInvalidatingHandles']=[gate('edit_view',1,2),gate(f'step_custom{n-4}',1,2)];parts.append(c)
 # Each pad has ONE native touch owner containing its passive state artwork.
@@ -208,33 +218,73 @@ for state in range(9):
  rounded(dr,(1,3,10,18),fill=bg,outline=edge,radius=2)
  if head:rounded(dr,(0,2,11,19),outline=C['text'],radius=3)
  save(f'tiny_state{state}.png',im)
+def track_mode_picker():
+ fn='track_mode_pick.png';im,d=image(360,48);rounded(d,(1,1,358,46),fill=C['panel'],outline='#727d81');save(fn,im)
+ kind=local('track_mode_picker',[art(fn,0,0,360,48),label(12,0,336,48,26,handle='Caption')],[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True)
+ return placed(kind,'open_bank',880,116,360,48,maps=[{'key':'Caption','value':f"Parameter {I['play_mode']}"}])
 track_pages=[]
 for start in [0,8]:
  im,dr=image(1280,628);text(dr,(24,16),f'TRACKS / {start+1:02}–{start+8:02}',28)
- for title,x,y in [('MODE',880,86),('SHIFT / STEPS',880,260),('EVERY / CYCLES',1070,260),('CYCLE',880,340),('SHIFT',1070,340)]:text(dr,(x,y),title,19,C['muted'])
+ for title,x,y in [('MODE',880,86),('SHIFT / STEPS',880,260),('EVERY / CYCLES',1070,260),('SHIFT',880,340),('CYCLE',1070,340)]:text(dr,(x,y),title,19,C['muted'])
  fn=f'tracks_{start}.png';save(fn,im);tracks=[art(fn,0,0,1280,628)]
  for row in range(8):
-  i=start+row;y=88+row*58;tracks += [button(f'edit_line{i}',f'A{i+1:02}',20,y,70,42),readout(f'name{i}',104,y,125,42,22)]
+  i=start+row;y=88+row*58
+  selection=button(f'edit_line{i}',f'A{i+1:02}',20,y,70,42,native_touch=True)
+  # Keep the existing selection trigger; amber follows the actual selected lane.
+  for state,c in enumerate(defs[-1]['value']['componentsData'][:2]):
+   c['bounds']['additionalInvalidatingHandles']=[gate(f'line_on{i}',state,2)]
+  tracks.append(selection)
   for j in range(32):
    for state in range(9):
-    c=art(f'tiny_state{state}.png',240+j*15,y+10,12,22);c['bounds']['additionalInvalidatingHandles']=[gate(f'trackcell{i}_{j}',state,9)];tracks.append(c)
-  tracks += toggle(f'l{i}_mute','M',735,y,48,42)+toggle(f'l{i}_solo','S',793,y,48,42)
- tracks += [readout('line_scope',880,40,370,36,22),field('play_mode',880,116,360,48),*toggle('auto_rotate','AUTO ROTATE',880,190,360,46),field('auto_shift',880,292,168,48),field('auto_every',1070,292,170,48),readout('phase_cycle',880,362,168,38,23),readout('phase_offset',1070,362,170,38,23),button('reset_phase','RESET PHASE',880,430,360,48)]
+    c=art(f'tiny_state{state}.png',154+j*15,y+10,12,22);c['bounds']['additionalInvalidatingHandles']=[gate(f'trackcell{i}_{j}',state,9)];tracks.append(c)
+  tracks += toggle(f'l{i}_mute','M',697,y,62,42)+toggle(f'l{i}_solo','S',775,y,62,42)
+ tracks += [track_mode_picker(),*toggle('auto_rotate','AUTO ROTATE',880,190,360,46),field('auto_shift',880,292,168,48),field('auto_every',1070,292,170,48),readout('phase_offset',880,362,168,38,23),readout('phase_cycle',1070,362,170,38,23),button('reset_phase','RESET PHASE',880,430,360,48)]
+ for key,x,title in [('phase_offset',880,'SHIFT'),('phase_cycle',1070,'CYCLE')]:
+  item=next(c for c in tracks if c['componentData']['name']==key)
+  width=math.ceil(font(19).getlength(title))
+  item['bounds']['bounds']=f'{x} 362 {width} 38'
+  definition=next(d['value'] for d in defs if d['key']==item['componentData']['type'])
+  lab=definition['componentsData'][0]
+  lab['bounds']['bounds']=f'0 0 {width} 38'
+  lab['componentData']['data']['textStyle']['justification']='horizontallyCentred verticallyCentred'
  track_pages.append(tracks)
 # CONFIG: sixteen fixed pad labels, one unified note field per lane.
 im,dr=image(1280,628);save('config.png',im)
 config=[art('config.png',0,0,1280,628)]
 # Identical native font and label height to PATTERN parameter names.
 # Reuse existing read-only label handles; preserve all parameter indices.
-for key,x,w,center in [('mapping_label',20,100,False),('port_label',145,290,True),('target_label',510,730,False)]:
- c=label(0,0,w,27,20,kind='Name')
- if center:c['componentData']['data']['textStyle']['justification']='horizontallyCentred verticallyCentred'
- k=local('config_heading_'+key,[c]);h=placed(k,key,x,0,w,27);h['bounds']['acceptsHWFocus']='No';config.append(h)
 for i in range(16):
  y=32+i*36
  im,d=image(100,32);text(d,(0,16),f'A{i+1:02}',22,anchor='lm');fn=f'config_pad{i}.png';save(fn,im);config.append(art(fn,20,y,100,32))
  config+=toggle(f'l{i}_hold','',145,y,290,32)
- config.append(field(f'l{i}_dnote',510,y,730,32,22))
+ config.append(field(f'l{i}_dnote',510,y,208,32,29))
+# CONFIG placement follows the user reference download.png (28 October 2026).
+# Coordinates exclude MPC's 111px native header.
+for title,x,y in [('SCALES',875,86),('START',875,186)]:
+ im,d=image(360,28);text(d,(0,0),title,19,C['muted']);fn='config_'+title.lower()+'.png';save(fn,im);config.append(art(fn,x,y,360,28))
+# All pending colours follow a read-only 2-bit handle; no animation or polling.
+for pending in range(4):
+ for key,x,y,w,h in [('choose_bank',875,116,360,46),('edit_row',875,216,174,46),('apply_mapping',1061,216,174,46)]:
+  green=bool(pending & (1 if key=='choose_bank' else 2)) if key!='apply_mapping' else bool(pending)
+  fill='#1a3324' if green else C['panel'];edge='#65bc7b' if green else '#727d81';ink='#a0d8ad' if green else C['text']
+  tag=f'config_pending_{key}_{pending}'
+  if key=='edit_row':
+   c=field(key,x,y,w,h);definition=copy.deepcopy(defs[-1]['value']);fn=tag+'.png';im=Image.new('RGB',(w,h*128),C['bg']);d=ImageDraw.Draw(im)
+   for frame in range(128):rounded(d,(1,frame*h+1,w-2,(frame+1)*h-2),fill=fill,outline=edge)
+   save(fn,im);definition['componentsData'][0]['componentData']['data']['filmStrip']=fn
+   definition['componentsData'][1]['componentData']['data']['textStyle']['colour']='ff'+ink[1:]
+   defs.append({'key':tag,'value':definition});c['componentData']['type']=tag
+  else:
+   im,d=image(w,h);rounded(d,(1,1,w-2,h-2),fill=fill,outline=edge)
+   if key=='apply_mapping':
+    text(d,(w//2,h//2),'APPLY',21,ink,'mm')
+    if green:d.ellipse((w-17,9,w-13,13),fill='#ffffff')
+   fn=tag+'.png';save(fn,im);children=[art(fn,0,0,w,h)];maps=[]
+   if key=='choose_bank':
+    children.append(label(12,0,w-24,h,26,handle='Caption',colour='ff'+ink[1:]));maps=[{'key':'Caption','value':f"Parameter {I['choose_sound']}"}]
+   kind=local(tag,children,[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True);c=placed(kind,key,x,y,w,h,maps=maps)
+  c['bounds']['additionalInvalidatingHandles']=[gate('choose_target',pending,4)];config.append(c)
+config.append(button('open_mapping','RESET',875,302,360,46,native_touch=True))
 # Only MOD still owns a selection layer.
 def overlay(dialog,title):
  im,d=image(1280,628);text(d,(40,25),title,32);filename=f'dialog{dialog}.png';save(filename,im);return [art(filename,0,0,1280,628)]
@@ -278,9 +328,14 @@ def mod_slider(key,x,y,w=180,h=58):
   save(fn,im)
  children=[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=fn,numFrames=127,invert=False,dragOrientation='Horizontal',handleName='Data'),0,0,w,h),label(8,28,w-16,h-28,18 if h<50 else 21)]
  return placed(local('slider_'+key,children,[action('Q-Link')],focus=True),key,x,y,w,h)
+def mod_picker(key,pick,x,y,w,h,n=23):
+ fn=f'mod_pick_{pick}.png';im,d=image(w,h);rounded(d,(1,1,w-2,h-2),fill=C['panel'],outline='#727d81');save(fn,im)
+ children=[art(fn,0,0,w,h),label(14,0,w-28,h,n,handle='Caption')]
+ kind=local(f'mod_pick_touch_{pick}',children,[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True)
+ return placed(kind,f'open_sound{pick}',x,y,w,h,maps=[{'key':'Caption','value':f'Parameter {I[key]}'}])
 for j,x in [(0,20),(1,700)]:
  im,d=image(560,48);text(d,(16,10),f'LFO {j+1}',26);save(f'mod_header{j}.png',im);mod_parts.append(art(f'mod_header{j}.png',x,88,560,48));mod_parts+=toggle(f'mod{j}_on','ON',x+110,88,122,46)
- mod_parts.append(field(f'mod{j}_wave',x,153,560,44,23))
+ mod_parts.append(mod_picker(f'mod{j}_wave',j*4,x,153,560,44))
  im,d=image(560,116,C['oled']);
  for xx in [140,280,420]:d.line((xx,22,xx,115),fill='#2c4036')
  save(f'mod_plot{j}.png',im);mod_parts.append(art(f'mod_plot{j}.png',x,210,560,116));mod_parts.append(readout('mod_tempo',x+325,210,235,22,16))
@@ -316,11 +371,11 @@ for j,x in [(0,20),(1,700)]:
  children=[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='mod_threshold_line.png',numFrames=200,invert=False,dragOrientation='Horizontal',handleName='Data'),k*17,0,17,68) for k in range(31)]
  for c in children:c['bounds']['acceptsHWFocus']='No'
  kind=local(f'threshold_overlay{j}',children);c=placed(kind,f'mod{j}_threshold',x+16,232,527,68,[gate(f'mod{j}_dest',7,8)]);c['bounds']['acceptsHWFocus']='No';mod_parts.append(c)
- mod_parts.append(field(f'mod{j}_sync',x,342,180,44,23));rate=field(f'mod{j}_rate',x+196,342,364,44,23);rate['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_sync',1,2)];mod_parts.append(rate)
+ mod_parts.append(mod_picker(f'mod{j}_sync',j*4+1,x,342,180,44));rate=mod_picker(f'mod{j}_rate',j*4+2,x+196,342,364,44);rate['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_sync',1,2)];mod_parts.append(rate)
  hz=mod_slider(f'mod{j}_hz',x+196,342,364,44);hz['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_sync',0,2)];mod_parts.append(hz)
  for k,(key,title) in enumerate([('depth','DEPTH'),('offset','OFFSET'),('phase','PHASE')]):
   xx=x+k*190;im,d=image(180,22);text(d,(0,0),title,18,C['muted']);fn=f'mod_label_{j}_{key}.png';save(fn,im);mod_parts += [art(fn,xx,401,180,22),mod_slider(f'mod{j}_{key}',xx,426)]
- im,d=image(560,22);text(d,(0,0),'DESTINATION',18,C['muted']);save(f'mod_destination{j}.png',im);mod_parts += [art(f'mod_destination{j}.png',x,490,560,22),field(f'mod{j}_dest',x,516,560,44,23)]
+ im,d=image(560,22);text(d,(0,0),'DESTINATION',18,C['muted']);save(f'mod_destination{j}.png',im);mod_parts += [art(f'mod_destination{j}.png',x,490,560,22),mod_picker(f'mod{j}_dest',j*4+3,x,516,560,44)]
  threshold=mod_slider(f'mod{j}_threshold',x+196,572,180,50);threshold['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,8)];mod_parts.append(threshold)
  im,d=image(180,30);text(d,(0,4),'THRESHOLD',18,C['muted']);save(f'mod_threshold{j}.png',im);c=art(f'mod_threshold{j}.png',x,576,180,30);c['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,8)];mod_parts.append(c)
  # Eight vertical faders replace the unintelligible numeric point buttons.
@@ -343,6 +398,35 @@ for i in range(16):
  cs.append(button('mod_pad',f'A{i+1:02}',280+(i%8)*90,220+(i//8)*75,78,56,False,i+1,17,tag=f'mod_target_pad{i}'))
 cs += [button('apply_rhythm','NONE',380,420,220,52,native_touch=True),button('close','CANCEL',680,420,220,52,native_touch=True)]
 for c in cs:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',6,7));mod_parts.append(c)
+# Same opaque selection-layer mechanism as MOD pad assignment.
+for c in config:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',0,7))
+scale_layer=overlay(5,'SELECT SCALE')
+scale_names=next(p['options'] for p in P if p['key']=='choose_sound')
+for i,title in enumerate(scale_names):
+ scale_layer.append(button('choose_sound',title,80+(i%4)*282,130+(i//4)*80,268,62,False,i,16,tag=f'scale_choice_{i}'))
+scale_layer.append(button('close','CLOSE',530,500,220,52,native_touch=True))
+for c in scale_layer:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',5,7));config.append(c)
+# Explicit confirmation for a bounded global randomization.
+for c in parts:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',0,7))
+confirmation=overlay(4,'This will randomize all the patterns')
+confirmation += [button('apply_rhythm','APPLY',370,320,240,56,native_touch=True),button('close','CANCEL',670,320,240,56,native_touch=True)]
+for c in confirmation:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',4,7));parts.append(c)
+# Eight contextual panels share one read-only context handle and one selection.
+mod_lists=[next(p['options'] for p in P if p['key']=='mod0_'+name) for name in ['wave','sync','rate','dest']]
+for pick in range(8):
+ title=['WAVEFORM','CLOCK MODE','RATE','DESTINATION'][pick%4]
+ panel=overlay(20+pick,title)
+ options=mod_lists[pick%4]
+ for option,name in enumerate(options):panel.append(button('map_sound',name,80+(option%4)*282,190+(option//4)*90,268,64,False,option,8,tag=f'mod_choice_{pick}_{option}'))
+ panel.append(button('close','CANCEL',530,450,220,52,native_touch=True))
+ for c in panel:c['bounds']['additionalInvalidatingHandles'] += [gate('dialog',2,7),gate('can_undo',pick,8)];mod_parts.append(c)
+mode_panel=overlay(3,'PLAYBACK MODE')
+for option,name in enumerate(['FWD','REV','PEND1','PEND2','URN']):mode_panel.append(button('map_sound',name,110+option*214,240,196,64,False,option,8,tag=f'play_mode_choice{option}'))
+mode_panel.append(button('close','CANCEL',530,420,220,52,native_touch=True))
+for page in track_pages:
+ for c in page:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',0,7))
+ for original in mode_panel:
+  c=copy.deepcopy(original);c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',3,7));page.append(c)
 pages=[('PATTERN' ,parts),('MOD',mod_parts),('01 - 08',track_pages[0]),('09 - 16',track_pages[1]),('CONFIG',config)]
 for name,children in pages:
  for control in children:

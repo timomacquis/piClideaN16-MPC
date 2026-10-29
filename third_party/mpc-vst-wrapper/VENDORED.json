@@ -1,7 +1,7 @@
 {
   "repo": "sd88me/mpc-vst-plugins",
   "commit": "97a2effca4114dd00f738b018e2f0d1d3ccb2d7f",
-  "modifications": "LOCAL-CONTEXT.patch: actual sample rate and cycle bounds, fail-silent missing time, suspension Note Off, canonical automation eligibility, pre-2.34 ARM pthread ABI. Upstream Q-Link refresh fixes retained. LOCAL-NOTIFICATIONS.patch: binary search of the generated sorted parameter-index table; no change to Q-Link refresh semantics. LOCAL-STATE-VALIDATION.patch: reject embedded NULs and propagate the engine state validation result to effSetChunk.",
+  "modifications": "LOCAL-CONTEXT.patch: actual sample rate and cycle bounds, fail-silent missing time, suspension Note Off, canonical automation eligibility, pre-2.34 ARM pthread ABI. Upstream Q-Link refresh fixes retained. LOCAL-NOTIFICATIONS.patch: binary search of the generated sorted parameter-index table; no change to Q-Link refresh semantics. LOCAL-STATE-VALIDATION.patch: reject embedded NULs and propagate the engine state validation result to effSetChunk. LOCAL-MOD-REFRESH.patch: MOD option notifications retain native automation/value reports without requesting a global screen reconstruction. LOCAL-BOUNDED-NOTIFICATIONS.patch: cap engine notification collection and coalesced host value delivery at 32 per audio block, with round-robin deferred delivery.",
   "files": [
     {
       "file": "LICENSE",
@@ -54,7 +54,11 @@
     {
       "file": "LOCAL-STATE-CAPACITY.patch",
       "sha256": "9d3cb6680347d9e366fbb0f210b4b416334bc58b0019f0d9d3e6b04306cd11fb"
+    },
+    {
+      "file": "LOCAL-BOUNDED-NOTIFICATIONS.patch",
+      "sha256": "4a0912fd6c74db98d9c6d2e622e435ce8928c43ac319b9f4a6dfa0bb8ad0f625"
     }
   ],
-  "patched_wrapper_sha256": "6fa152e13f442f440c91e20d032d5be7ece0b3f37d324f43960896549e0277b8"
+  "patched_wrapper_sha256": "ccb0d2fde410588ece19a1000c45aa2b6f2118a4f39b413c46fda22b1b640dd5"
 }
