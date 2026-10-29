@@ -4,7 +4,7 @@ Version 1.2.5
 
 ## 1. Overview
 
-πClideaN is a MIDI instrument: it produces no audio and drives a Drum Track or drum instrument.
+πClideaN is a MIDI instrument: it produces no audio. Its dedicated MIDI output drives synthesizers, drum instruments and sample tracks.
 
 This hybrid sequencer combines Euclidean pattern generation, step-by-step editing, parameter locks, selective randomization and probability.
 
@@ -24,7 +24,7 @@ A white outline identifies the selected pattern.
 
 Choose the sounds you want to play. πClideaN supplies the rhythm.
 
-Load the plugin on a plugin track, then create a separate Drum Track or drum instrument.
+Load πClideaN on a plugin track, then load the target on another track: a synthesizer, drum instrument or Drum Track.
 
 On that target, select this MIDI input:
 
@@ -32,7 +32,9 @@ On that target, select this MIDI input:
 
 Receive **channel 1** or all channels. Each plugin instance has its own port; additional ports are numbered.
 
-Open CONFIG and match each lane’s **MIDI NOTE** to its target sound.
+Open CONFIG and assign each lane’s **MIDI NOTE** to a pitch or target sound.
+
+For melodic patterns, choose a **SCALE** and **START** note, then **APPLY**. For drums, match the MIDI notes to the kit’s pads.
 
 The default notes are **36–51**. All output uses channel 1.
 
@@ -42,7 +44,7 @@ Use distinct notes for independent sounds, and avoid receiving the same output t
 
 ## 3. PATTERN — LINE
 
-![PATTERN LINE — A03 selected](images/pattern-line-force-1.2.4.png)
+![PATTERN LINE — A03 selected](images/pattern-line-force-1.2.5.png)
 
 Choose a pattern from **A01 to A16**, then **LINE**. 
 
@@ -163,7 +165,7 @@ The dimmed **LINE** row remains a read-only reference. Return to LINE to change 
 
 ## 5. MOD — dual LFO modulation
 
-![MOD 1 assigned to A16 — Sample & Hold and Note On](images/mod-force-1.2.4.png)
+![MOD 1 assigned to A16 — Sample & Hold and Note On](images/mod-force-1.2.5.png)
 
 Add movement to a lane, or let a waveform create its own triggers.
 
@@ -261,7 +263,7 @@ Tap **MODE** to open the playback-direction panel. Select a mode to apply it and
 
 ## 7. 01 - 08 / 09 - 16 — playback and rotation
 
-![Lanes 01–08 — A07 selected, Auto Rotate enabled](images/tracks-force-1.2.4.png)
+![Lanes 01–08 — A07 selected, Auto Rotate enabled](images/tracks-force-1.2.5.png)
 
 Step back and watch eight lanes play together.
 
@@ -295,13 +297,15 @@ A cycle follows the playback mode, not necessarily a host bar. Step expression m
 
 ## 8. CONFIG — MIDI notes and GATE / HOLD
 
-![CONFIG — sixteen MIDI notes and GATE / HOLD modes](images/config-force-1.2.4.png)
+![CONFIG — Dorian mode selected, awaiting APPLY](images/config-force-1.2.5.png)
 
 Give each lane its sound and choose how it holds a note.
 
 **MIDI NOTE** sets the output note: 0–127, with its Force note name, for example **36 · C1**.
 
 Tap the button under **MODE** to switch between GATE and HOLD.
+
+In this screenshot, **Dorian mode** is selected but not yet applied: SCALES and APPLY are green, while the notes remain 36–51.
 
 ### Play a scale
 
