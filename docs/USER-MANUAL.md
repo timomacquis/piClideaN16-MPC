@@ -245,6 +245,8 @@ Reassigning a PAD releases its previous LFO note.
 
 ## 6. Muted lanes and activity
 
+![A03 selected, dimmed muted lanes and azure activity on A05](images/lane-activity-force-1.3.0.png)
+
 Follow the rhythm by watching **A01–A16**.
 
 An **azure pulse** marks an emitted note reaching playback time. Your selected lane keeps its white outline.
