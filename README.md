@@ -1,6 +1,6 @@
 # πClideaN 16 MPC
 
-**Version 1.2.5 · Sixteen-lane hybrid MIDI sequencer for Akai MPC OS**
+**Version 1.3.0 · Sixteen-lane hybrid MIDI sequencer for Akai MPC OS**
 
 ![πClideaN 16 MPC](Cover.JPG)
 
@@ -14,6 +14,8 @@ Build evolving rhythmic and melodic patterns with sixteen independent lanes, per
 
 
 - Four independent modulation slots, each with two LFOs and a bipolar MIX control.
+- Eleven waveform/generator choices, with cross-LFO rate, depth and offset modulation.
+- Cached background waveform previews and streamlined track graphics.
 - Static four-bar waveform previews, configurable destinations and threshold-based Note On.
 - One CONFIG page for all sixteen MIDI notes and GATE / HOLD modes.
 
@@ -39,15 +41,15 @@ The plugin generates MIDI only. Use a separate target instrument or sample track
 
 ### Tracks — pattern overview and playback controls
 
-![TR 01–08 on Akai Force: rounded controls, step indicators and automatic rotation](docs/images/tracks-force-1.2.5.png)
+![TR 01–08 on Akai Force: rounded controls, step indicators and automatic rotation](docs/images/tracks-force-1.3.0.png)
 
 ### CONFIG — MIDI notes and GATE / HOLD
 
-![CONFIG on Akai Force: sixteen MIDI notes and independent GATE / HOLD controls](docs/images/config-force-1.2.5.png)
+![CONFIG on Akai Force: sixteen MIDI notes and independent GATE / HOLD controls](docs/images/config-force-1.3.0.png)
 
 ## Download and setup
 
-Install [piClideaN-MPC-1.2.5-armv7.zip](Installation/piClideaN-MPC-1.2.5-armv7.zip) with a compatible portable-package installer. See [Installation and removal](docs/INSTALLATION.md).
+Install [piClideaN-MPC-1.3.0-armv7.zip](Installation/piClideaN-MPC-1.3.0-armv7.zip) with a compatible portable-package installer. See [Installation and removal](docs/INSTALLATION.md).
 
 ## Documentation
 

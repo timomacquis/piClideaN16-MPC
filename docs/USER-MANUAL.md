@@ -1,6 +1,6 @@
 # πClideaN16 MPC — User Manual
 
-Version 1.2.5
+Version 1.3.0
 
 ## 1. Overview
 
@@ -165,7 +165,7 @@ The dimmed **LINE** row remains a read-only reference. Return to LINE to change 
 
 ## 5. MOD — dual LFO modulation
 
-![MOD 1 assigned to A16 — Sample & Hold and Note On](images/mod-force-1.2.5.png)
+![MOD 1 assigned to A16 — Random Smooth, Bounce and LFO chaining](images/mod-force-1.3.0.png)
 
 Add movement to a lane, or let a waveform create its own triggers.
 
@@ -179,7 +179,9 @@ Selecting MOD does not change the lane selected in PATTERN.
 
 Switch the LFO **ON** and choose a shape:
 
-Sine, Triangle, Ramp Up, Ramp Down, Square, Sample & Hold, Random Smooth or Free Curve.
+Sine, Triangle, Ramp Up, Ramp Down, Square, Sample & Hold, Random Smooth, Free Curve, Random Walk, Random Loop or Bounce.
+
+**SQUARE** adds pulse width. **RANDOM WALK** adjusts random step size. **RANDOM LOOP** sets loop length and evolution. **BOUNCE** adjusts gravity and restitution.
 
 **SYNC** fits its cycle to the tempo: 1/16 note to 4 bars.
 
@@ -196,6 +198,16 @@ Choose a **DESTINATION**:
 NONE, Velocity, Probability, Humanize, Gate, Ratchet, Decay or Note On.
 
 Parameter modulation affects playback. Your stored lane and step values remain intact.
+
+### Chain the LFOs
+
+Choose **LFO 2 RATE, DEPTH or OFFSET** as LFO 1’s destination, or the corresponding LFO 1 destination from LFO 2.
+
+One shape then moves the other: for example, Random Walk can vary the depth of a note-triggering LFO.
+
+Stored settings remain intact. Mutual modulation uses the previous control value and stays bounded.
+
+Chained destinations are purple; a small dot marks the receiving parameter. MIX remains separate from the chaining path.
 
 ### Mix the two shapes
 
@@ -225,7 +237,7 @@ The previews show **four bars** at the current tempo. They stay still until rele
 
 The dashed amber line marks the threshold. Each curve shows one source; actual crossings depend on the mixed signal.
 
-Random shapes show an example, not the next played sequence. Very high frequencies appear as an amplitude band.
+Random shapes show an example, not the next played sequence. Very fast periodic shapes may appear as an amplitude band; random shapes retain a trajectory.
 
 OFF and inaudible lanes suspend phase. Re-enabling resumes from that phase without immediately firing a note already above threshold.
 

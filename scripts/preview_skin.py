@@ -47,7 +47,8 @@ def draw_control(canvas,c,ox=0,oy=0,handle=None):
         canvas.paste(Image.open(A/d['onImage' if on else 'offImage']).convert('RGB'),(x,y))
     elif kind=='Knob':
         p=P[idx] if idx is not None else {'min':0,'max':1};lo=p.get('min',0);hi=len(p['options'])-1 if 'options'in p else p.get('max',1)
-        frame=round(d['numFrames']*((V[idx] if idx is not None else 0)-lo)/(hi-lo)) if hi!=lo else 0
+        last=d['numFrames']-1 if d['filmStrip']=='track_states_128.png' else d['numFrames']
+        frame=round(last*((V[idx] if idx is not None else 0)-lo)/(hi-lo)) if hi!=lo else 0
         strip=Image.open(A/d['filmStrip']).convert('RGB');canvas.paste(strip.crop((0,frame*h,w,(frame+1)*h)),(x,y))
     elif kind=='Label' and idx is not None:
         p=P[idx];v=V[idx];style=d['textStyle'];fs=round(style['font']['height']);font=ImageFont.truetype(str(B/'reference/fonts/TitilliumWeb-Regular.ttf'),fs)

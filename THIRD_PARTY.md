@@ -33,3 +33,7 @@ The build downloads pinned official Debian compiler packages. Compiler binaries 
 - [saustin2010/mpc-vst-incipience](https://github.com/saustin2010/mpc-vst-incipience): named drum-instrument note profile.
 
 These applications are not runtime dependencies. No firmware, samples, presets or proprietary instrument binary from these references is included.
+
+## Extended modulation generators
+
+Random Walk, Random Loop, Bounce and cross-LFO control are original MIT implementations. The documented behaviours of [Lunar Modulator](https://github.com/ip2k/lunar-modulator) informed the design; no Lunar audio engine, firmware or source implementation is incorporated.

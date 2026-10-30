@@ -28,7 +28,7 @@ Parameter writes do not request a native screen rebuild by default. Explicit pag
 
 ## Native UI
 
-The plugin supplies five 1280 × 628 content pages; MPC supplies the surrounding header and tabs. PATTERN provides two rows of lane selectors, eight contextual controls and two rows of sixteen steps. TR and SET each split the sixteen lanes across two pages.
+The plugin supplies five 1280 × 628 content pages; MPC supplies the surrounding header and tabs. PATTERN provides two rows of lane selectors, eight contextual controls and two rows of sixteen steps. The two track pages cover lanes 01–08 and 09–16; CONFIG lists all sixteen lanes on one page.
 
 A step's native touch owner contains its passive state artwork. Native toggle controls own persistent buttons such as mute, solo and HOLD. Artwork does not create a separate interactive layer above these controls. Focus is white; triggers are red, custom steps violet and active buttons muted amber.
 
@@ -67,6 +67,13 @@ PATTERN lane selection does not invalidate MOD visual caches. MOD context change
 
 ## Native value updates
 
-Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most 32 from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
+Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most eight from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
 
 Applied scale and root metadata are saved with the project. Newly saved states use a SCALE extension that older plugin versions cannot read; retain a project copy before downgrading.
+
+
+## Extended modulation and cached graphics
+
+The eleven control generators live in `src/mod_lfo.h` and `src/mod_extended.h`. `src/mod_chain.h` applies bounded previous-value cross modulation. `src/mod_preview_worker.h` computes static waveform previews from immutable snapshots on one dedicated worker, without MIDI or host callbacks. Completed results are cached, stale results rejected and requests coalesced to at most ten per second.
+
+The two track pages share a 128-frame miniature atlas with repeated state plateaus. Each passive miniature uses one native control. The MIX and NOTE ON paths remain independent of preview generation.

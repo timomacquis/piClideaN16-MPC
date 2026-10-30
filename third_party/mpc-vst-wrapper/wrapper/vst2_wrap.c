@@ -496,6 +496,9 @@ static void render_events(wrap_t *w, float **out, int32_t n, int accumulate) {
 }
 #endif
 
+#ifndef PICN_NOTIFICATION_BUDGET
+#define PICN_NOTIFICATION_BUDGET 32
+#endif
 static void housekeeping(AEffect *e, int32_t n) {
     wrap_t *w = e->object;
     if (HAS_LFO_BPM || HAS_TRANSPORT || HAS_SONG_POS) update_tempo(w, n);
@@ -588,7 +591,7 @@ static void housekeeping(AEffect *e, int32_t n) {
     if (cc_due || w->cc_delivery_active) {
         int sent = 0, scanned = 0;
         w->cc_delivery_active = 0;
-        while (scanned < NPARAMS && sent < 32) {
+        while (scanned < NPARAMS && sent < PICN_NOTIFICATION_BUDGET) {
             int i = w->cc_cursor;
             w->cc_cursor = (i + 1) % NPARAMS;
             scanned++;
@@ -598,7 +601,7 @@ static void housekeeping(AEffect *e, int32_t n) {
                 sent++;
             }
         }
-        if (sent == 32) w->cc_delivery_active = 1;
+        if (sent == PICN_NOTIFICATION_BUDGET) w->cc_delivery_active = 1;
     }
     /* At most one UpdateDisplay per 50 ms (2205 frames); a request inside that window waits, it is not dropped. MPC rebuilds its
      * parameter screen on each one, so a burst (a held stepper, readouts that change every poll) must not become a rebuild per block. */

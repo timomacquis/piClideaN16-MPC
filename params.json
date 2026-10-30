@@ -107,7 +107,7 @@
     "key": "map_sound",
     "name": "Sound",
     "min": 0,
-    "max": 7,
+    "max": 10,
     "default": 0,
     "display": "int",
     "refresh_display": false,
@@ -2322,7 +2322,7 @@
     "key": "g0_0",
     "name": "Retired grid / static MOD segment 1",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2331,7 +2331,7 @@
     "key": "g0_1",
     "name": "Retired grid / static MOD segment 2",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2340,7 +2340,7 @@
     "key": "g0_2",
     "name": "Retired grid / static MOD segment 3",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2349,7 +2349,7 @@
     "key": "g0_3",
     "name": "Retired grid / static MOD segment 4",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2358,7 +2358,7 @@
     "key": "g0_4",
     "name": "Retired grid / static MOD segment 5",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2367,7 +2367,7 @@
     "key": "g0_5",
     "name": "Retired grid / static MOD segment 6",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2376,7 +2376,7 @@
     "key": "g0_6",
     "name": "Retired grid / static MOD segment 7",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2385,7 +2385,7 @@
     "key": "g0_7",
     "name": "Retired grid / static MOD segment 8",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2394,7 +2394,7 @@
     "key": "g0_8",
     "name": "Retired grid / static MOD segment 9",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2403,7 +2403,7 @@
     "key": "g0_9",
     "name": "Retired grid / static MOD segment 10",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2412,7 +2412,7 @@
     "key": "g0_10",
     "name": "Retired grid / static MOD segment 11",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2421,7 +2421,7 @@
     "key": "g0_11",
     "name": "Retired grid / static MOD segment 12",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2430,7 +2430,7 @@
     "key": "g0_12",
     "name": "Retired grid / static MOD segment 13",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2439,7 +2439,7 @@
     "key": "g0_13",
     "name": "Retired grid / static MOD segment 14",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2448,7 +2448,7 @@
     "key": "g0_14",
     "name": "Retired grid / static MOD segment 15",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2457,7 +2457,7 @@
     "key": "g0_15",
     "name": "Retired grid / static MOD segment 16",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2466,7 +2466,7 @@
     "key": "g0_16",
     "name": "Retired grid / static MOD segment 17",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2475,7 +2475,7 @@
     "key": "g0_17",
     "name": "Retired grid / static MOD segment 18",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2484,7 +2484,7 @@
     "key": "g0_18",
     "name": "Retired grid / static MOD segment 19",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2493,7 +2493,7 @@
     "key": "g0_19",
     "name": "Retired grid / static MOD segment 20",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2502,7 +2502,7 @@
     "key": "g0_20",
     "name": "Retired grid / static MOD segment 21",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2511,7 +2511,7 @@
     "key": "g0_21",
     "name": "Retired grid / static MOD segment 22",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2520,7 +2520,7 @@
     "key": "g0_22",
     "name": "Retired grid / static MOD segment 23",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2529,7 +2529,7 @@
     "key": "g0_23",
     "name": "Retired grid / static MOD segment 24",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2538,7 +2538,7 @@
     "key": "g0_24",
     "name": "Retired grid / static MOD segment 25",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2547,7 +2547,7 @@
     "key": "g0_25",
     "name": "Retired grid / static MOD segment 26",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2556,7 +2556,7 @@
     "key": "g0_26",
     "name": "Retired grid / static MOD segment 27",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2565,7 +2565,7 @@
     "key": "g0_27",
     "name": "Retired grid / static MOD segment 28",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2574,7 +2574,7 @@
     "key": "g0_28",
     "name": "Retired grid / static MOD segment 29",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2583,7 +2583,7 @@
     "key": "g0_29",
     "name": "Retired grid / static MOD segment 30",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2592,7 +2592,7 @@
     "key": "g0_30",
     "name": "Retired grid / static MOD segment 31",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2601,7 +2601,7 @@
     "key": "g0_31",
     "name": "Retired grid / static MOD segment 32",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2610,7 +2610,7 @@
     "key": "g1_0",
     "name": "Retired grid / static MOD segment 33",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2619,7 +2619,7 @@
     "key": "g1_1",
     "name": "Retired grid / static MOD segment 34",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2628,7 +2628,7 @@
     "key": "g1_2",
     "name": "Retired grid / static MOD segment 35",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2637,7 +2637,7 @@
     "key": "g1_3",
     "name": "Retired grid / static MOD segment 36",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2646,7 +2646,7 @@
     "key": "g1_4",
     "name": "Retired grid / static MOD segment 37",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2655,7 +2655,7 @@
     "key": "g1_5",
     "name": "Retired grid / static MOD segment 38",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2664,7 +2664,7 @@
     "key": "g1_6",
     "name": "Retired grid / static MOD segment 39",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2673,7 +2673,7 @@
     "key": "g1_7",
     "name": "Retired grid / static MOD segment 40",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2682,7 +2682,7 @@
     "key": "g1_8",
     "name": "Retired grid / static MOD segment 41",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2691,7 +2691,7 @@
     "key": "g1_9",
     "name": "Retired grid / static MOD segment 42",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2700,7 +2700,7 @@
     "key": "g1_10",
     "name": "Retired grid / static MOD segment 43",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2709,7 +2709,7 @@
     "key": "g1_11",
     "name": "Retired grid / static MOD segment 44",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2718,7 +2718,7 @@
     "key": "g1_12",
     "name": "Retired grid / static MOD segment 45",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2727,7 +2727,7 @@
     "key": "g1_13",
     "name": "Retired grid / static MOD segment 46",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2736,7 +2736,7 @@
     "key": "g1_14",
     "name": "Retired grid / static MOD segment 47",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2745,7 +2745,7 @@
     "key": "g1_15",
     "name": "Retired grid / static MOD segment 48",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2754,7 +2754,7 @@
     "key": "g1_16",
     "name": "Retired grid / static MOD segment 49",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2763,7 +2763,7 @@
     "key": "g1_17",
     "name": "Retired grid / static MOD segment 50",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2772,7 +2772,7 @@
     "key": "g1_18",
     "name": "Retired grid / static MOD segment 51",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2781,7 +2781,7 @@
     "key": "g1_19",
     "name": "Retired grid / static MOD segment 52",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2790,7 +2790,7 @@
     "key": "g1_20",
     "name": "Retired grid / static MOD segment 53",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2799,7 +2799,7 @@
     "key": "g1_21",
     "name": "Retired grid / static MOD segment 54",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2808,7 +2808,7 @@
     "key": "g1_22",
     "name": "Retired grid / static MOD segment 55",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2817,7 +2817,7 @@
     "key": "g1_23",
     "name": "Retired grid / static MOD segment 56",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2826,7 +2826,7 @@
     "key": "g1_24",
     "name": "Retired grid / static MOD segment 57",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2835,7 +2835,7 @@
     "key": "g1_25",
     "name": "Retired grid / static MOD segment 58",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2844,7 +2844,7 @@
     "key": "g1_26",
     "name": "Retired grid / static MOD segment 59",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2853,7 +2853,7 @@
     "key": "g1_27",
     "name": "Retired grid / static MOD segment 60",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2862,7 +2862,7 @@
     "key": "g1_28",
     "name": "Retired grid / static MOD segment 61",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2871,7 +2871,7 @@
     "key": "g1_29",
     "name": "Retired grid / static MOD segment 62",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2880,7 +2880,7 @@
     "key": "g1_30",
     "name": "Retired grid / static MOD segment 63",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2889,7 +2889,7 @@
     "key": "g1_31",
     "name": "Retired grid / static MOD segment 64",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2898,7 +2898,7 @@
     "key": "g2_0",
     "name": "Retired grid / static MOD segment 65",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2907,7 +2907,7 @@
     "key": "g2_1",
     "name": "Retired grid / static MOD segment 66",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2916,7 +2916,7 @@
     "key": "g2_2",
     "name": "Retired grid / static MOD segment 67",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2925,7 +2925,7 @@
     "key": "g2_3",
     "name": "Retired grid / static MOD segment 68",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2934,7 +2934,7 @@
     "key": "g2_4",
     "name": "Retired grid / static MOD segment 69",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2943,7 +2943,7 @@
     "key": "g2_5",
     "name": "Retired grid / static MOD segment 70",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2952,7 +2952,7 @@
     "key": "g2_6",
     "name": "Retired grid / static MOD segment 71",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2961,7 +2961,7 @@
     "key": "g2_7",
     "name": "Retired grid / static MOD segment 72",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2970,7 +2970,7 @@
     "key": "g2_8",
     "name": "Retired grid / static MOD segment 73",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2979,7 +2979,7 @@
     "key": "g2_9",
     "name": "Retired grid / static MOD segment 74",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2988,7 +2988,7 @@
     "key": "g2_10",
     "name": "Retired grid / static MOD segment 75",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -2997,7 +2997,7 @@
     "key": "g2_11",
     "name": "Retired grid / static MOD segment 76",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3006,7 +3006,7 @@
     "key": "g2_12",
     "name": "Retired grid / static MOD segment 77",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3015,7 +3015,7 @@
     "key": "g2_13",
     "name": "Retired grid / static MOD segment 78",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3024,7 +3024,7 @@
     "key": "g2_14",
     "name": "Retired grid / static MOD segment 79",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3033,7 +3033,7 @@
     "key": "g2_15",
     "name": "Retired grid / static MOD segment 80",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3042,7 +3042,7 @@
     "key": "g2_16",
     "name": "Retired grid / static MOD segment 81",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3051,7 +3051,7 @@
     "key": "g2_17",
     "name": "Retired grid / static MOD segment 82",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3060,7 +3060,7 @@
     "key": "g2_18",
     "name": "Retired grid / static MOD segment 83",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3069,7 +3069,7 @@
     "key": "g2_19",
     "name": "Retired grid / static MOD segment 84",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3078,7 +3078,7 @@
     "key": "g2_20",
     "name": "Retired grid / static MOD segment 85",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3087,7 +3087,7 @@
     "key": "g2_21",
     "name": "Retired grid / static MOD segment 86",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3096,7 +3096,7 @@
     "key": "g2_22",
     "name": "Retired grid / static MOD segment 87",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3105,7 +3105,7 @@
     "key": "g2_23",
     "name": "Retired grid / static MOD segment 88",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3114,7 +3114,7 @@
     "key": "g2_24",
     "name": "Retired grid / static MOD segment 89",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3123,7 +3123,7 @@
     "key": "g2_25",
     "name": "Retired grid / static MOD segment 90",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3132,7 +3132,7 @@
     "key": "g2_26",
     "name": "Retired grid / static MOD segment 91",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3141,7 +3141,7 @@
     "key": "g2_27",
     "name": "Retired grid / static MOD segment 92",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3150,7 +3150,7 @@
     "key": "g2_28",
     "name": "Retired grid / static MOD segment 93",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3159,7 +3159,7 @@
     "key": "g2_29",
     "name": "Retired grid / static MOD segment 94",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3168,7 +3168,7 @@
     "key": "g2_30",
     "name": "Retired grid / static MOD segment 95",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3177,7 +3177,7 @@
     "key": "g2_31",
     "name": "Retired grid / static MOD segment 96",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3186,7 +3186,7 @@
     "key": "g3_0",
     "name": "Retired grid / static MOD segment 97",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3195,7 +3195,7 @@
     "key": "g3_1",
     "name": "Retired grid / static MOD segment 98",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3204,7 +3204,7 @@
     "key": "g3_2",
     "name": "Retired grid / static MOD segment 99",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3213,7 +3213,7 @@
     "key": "g3_3",
     "name": "Retired grid / static MOD segment 100",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3222,7 +3222,7 @@
     "key": "g3_4",
     "name": "Retired grid / static MOD segment 101",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3231,7 +3231,7 @@
     "key": "g3_5",
     "name": "Retired grid / static MOD segment 102",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3240,7 +3240,7 @@
     "key": "g3_6",
     "name": "Retired grid / static MOD segment 103",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3249,7 +3249,7 @@
     "key": "g3_7",
     "name": "Retired grid / static MOD segment 104",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3258,7 +3258,7 @@
     "key": "g3_8",
     "name": "Retired grid / static MOD segment 105",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3267,7 +3267,7 @@
     "key": "g3_9",
     "name": "Retired grid / static MOD segment 106",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3276,7 +3276,7 @@
     "key": "g3_10",
     "name": "Retired grid / static MOD segment 107",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3285,7 +3285,7 @@
     "key": "g3_11",
     "name": "Retired grid / static MOD segment 108",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3294,7 +3294,7 @@
     "key": "g3_12",
     "name": "Retired grid / static MOD segment 109",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3303,7 +3303,7 @@
     "key": "g3_13",
     "name": "Retired grid / static MOD segment 110",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3312,7 +3312,7 @@
     "key": "g3_14",
     "name": "Retired grid / static MOD segment 111",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3321,7 +3321,7 @@
     "key": "g3_15",
     "name": "Retired grid / static MOD segment 112",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3330,7 +3330,7 @@
     "key": "g3_16",
     "name": "Retired grid / static MOD segment 113",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3339,7 +3339,7 @@
     "key": "g3_17",
     "name": "Retired grid / static MOD segment 114",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3348,7 +3348,7 @@
     "key": "g3_18",
     "name": "Retired grid / static MOD segment 115",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3357,7 +3357,7 @@
     "key": "g3_19",
     "name": "Retired grid / static MOD segment 116",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3366,7 +3366,7 @@
     "key": "g3_20",
     "name": "Retired grid / static MOD segment 117",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3375,7 +3375,7 @@
     "key": "g3_21",
     "name": "Retired grid / static MOD segment 118",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3384,7 +3384,7 @@
     "key": "g3_22",
     "name": "Retired grid / static MOD segment 119",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3393,7 +3393,7 @@
     "key": "g3_23",
     "name": "Retired grid / static MOD segment 120",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3402,7 +3402,7 @@
     "key": "g3_24",
     "name": "Retired grid / static MOD segment 121",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3411,7 +3411,7 @@
     "key": "g3_25",
     "name": "Retired grid / static MOD segment 122",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3420,7 +3420,7 @@
     "key": "g3_26",
     "name": "Retired grid / static MOD segment 123",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3429,7 +3429,7 @@
     "key": "g3_27",
     "name": "Retired grid / static MOD segment 124",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3438,7 +3438,7 @@
     "key": "g3_28",
     "name": "Retired grid / static MOD segment 125",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3447,7 +3447,7 @@
     "key": "g3_29",
     "name": "Retired grid / static MOD segment 126",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3456,7 +3456,7 @@
     "key": "g3_30",
     "name": "Retired grid / static MOD segment 127",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3465,7 +3465,7 @@
     "key": "g3_31",
     "name": "Retired grid / static MOD segment 128",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3474,7 +3474,7 @@
     "key": "g4_0",
     "name": "Retired grid / static MOD segment 129",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3483,7 +3483,7 @@
     "key": "g4_1",
     "name": "Retired grid / static MOD segment 130",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3492,7 +3492,7 @@
     "key": "g4_2",
     "name": "Retired grid / static MOD segment 131",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3501,7 +3501,7 @@
     "key": "g4_3",
     "name": "Retired grid / static MOD segment 132",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3510,7 +3510,7 @@
     "key": "g4_4",
     "name": "Retired grid / static MOD segment 133",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3519,7 +3519,7 @@
     "key": "g4_5",
     "name": "Retired grid / static MOD segment 134",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3528,7 +3528,7 @@
     "key": "g4_6",
     "name": "Retired grid / static MOD segment 135",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3537,7 +3537,7 @@
     "key": "g4_7",
     "name": "Retired grid / static MOD segment 136",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3546,7 +3546,7 @@
     "key": "g4_8",
     "name": "Retired grid / static MOD segment 137",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3555,7 +3555,7 @@
     "key": "g4_9",
     "name": "Retired grid / static MOD segment 138",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3564,7 +3564,7 @@
     "key": "g4_10",
     "name": "Retired grid / static MOD segment 139",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3573,7 +3573,7 @@
     "key": "g4_11",
     "name": "Retired grid / static MOD segment 140",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3582,7 +3582,7 @@
     "key": "g4_12",
     "name": "Retired grid / static MOD segment 141",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3591,7 +3591,7 @@
     "key": "g4_13",
     "name": "Retired grid / static MOD segment 142",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3600,7 +3600,7 @@
     "key": "g4_14",
     "name": "Retired grid / static MOD segment 143",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3609,7 +3609,7 @@
     "key": "g4_15",
     "name": "Retired grid / static MOD segment 144",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3618,7 +3618,7 @@
     "key": "g4_16",
     "name": "Retired grid / static MOD segment 145",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3627,7 +3627,7 @@
     "key": "g4_17",
     "name": "Retired grid / static MOD segment 146",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3636,7 +3636,7 @@
     "key": "g4_18",
     "name": "Retired grid / static MOD segment 147",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3645,7 +3645,7 @@
     "key": "g4_19",
     "name": "Retired grid / static MOD segment 148",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3654,7 +3654,7 @@
     "key": "g4_20",
     "name": "Retired grid / static MOD segment 149",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3663,7 +3663,7 @@
     "key": "g4_21",
     "name": "Retired grid / static MOD segment 150",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3672,7 +3672,7 @@
     "key": "g4_22",
     "name": "Retired grid / static MOD segment 151",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3681,7 +3681,7 @@
     "key": "g4_23",
     "name": "Retired grid / static MOD segment 152",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3690,7 +3690,7 @@
     "key": "g4_24",
     "name": "Retired grid / static MOD segment 153",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3699,7 +3699,7 @@
     "key": "g4_25",
     "name": "Retired grid / static MOD segment 154",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3708,7 +3708,7 @@
     "key": "g4_26",
     "name": "Retired grid / static MOD segment 155",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3717,7 +3717,7 @@
     "key": "g4_27",
     "name": "Retired grid / static MOD segment 156",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3726,7 +3726,7 @@
     "key": "g4_28",
     "name": "Retired grid / static MOD segment 157",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3735,7 +3735,7 @@
     "key": "g4_29",
     "name": "Retired grid / static MOD segment 158",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3744,7 +3744,7 @@
     "key": "g4_30",
     "name": "Retired grid / static MOD segment 159",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3753,7 +3753,7 @@
     "key": "g4_31",
     "name": "Retired grid / static MOD segment 160",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3762,7 +3762,7 @@
     "key": "g5_0",
     "name": "Retired grid / static MOD segment 161",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3771,7 +3771,7 @@
     "key": "g5_1",
     "name": "Retired grid / static MOD segment 162",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3780,7 +3780,7 @@
     "key": "g5_2",
     "name": "Retired grid / static MOD segment 163",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3789,7 +3789,7 @@
     "key": "g5_3",
     "name": "Retired grid / static MOD segment 164",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3798,7 +3798,7 @@
     "key": "g5_4",
     "name": "Retired grid / static MOD segment 165",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3807,7 +3807,7 @@
     "key": "g5_5",
     "name": "Retired grid / static MOD segment 166",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3816,7 +3816,7 @@
     "key": "g5_6",
     "name": "Retired grid / static MOD segment 167",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3825,7 +3825,7 @@
     "key": "g5_7",
     "name": "Retired grid / static MOD segment 168",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3834,7 +3834,7 @@
     "key": "g5_8",
     "name": "Retired grid / static MOD segment 169",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3843,7 +3843,7 @@
     "key": "g5_9",
     "name": "Retired grid / static MOD segment 170",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3852,7 +3852,7 @@
     "key": "g5_10",
     "name": "Retired grid / static MOD segment 171",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3861,7 +3861,7 @@
     "key": "g5_11",
     "name": "Retired grid / static MOD segment 172",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3870,7 +3870,7 @@
     "key": "g5_12",
     "name": "Retired grid / static MOD segment 173",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3879,7 +3879,7 @@
     "key": "g5_13",
     "name": "Retired grid / static MOD segment 174",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3888,7 +3888,7 @@
     "key": "g5_14",
     "name": "Retired grid / static MOD segment 175",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3897,7 +3897,7 @@
     "key": "g5_15",
     "name": "Retired grid / static MOD segment 176",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3906,7 +3906,7 @@
     "key": "g5_16",
     "name": "Retired grid / static MOD segment 177",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3915,7 +3915,7 @@
     "key": "g5_17",
     "name": "Retired grid / static MOD segment 178",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3924,7 +3924,7 @@
     "key": "g5_18",
     "name": "Retired grid / static MOD segment 179",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3933,7 +3933,7 @@
     "key": "g5_19",
     "name": "Retired grid / static MOD segment 180",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3942,7 +3942,7 @@
     "key": "g5_20",
     "name": "Retired grid / static MOD segment 181",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3951,7 +3951,7 @@
     "key": "g5_21",
     "name": "Retired grid / static MOD segment 182",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3960,7 +3960,7 @@
     "key": "g5_22",
     "name": "Retired grid / static MOD segment 183",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3969,7 +3969,7 @@
     "key": "g5_23",
     "name": "Retired grid / static MOD segment 184",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3978,7 +3978,7 @@
     "key": "g5_24",
     "name": "Retired grid / static MOD segment 185",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3987,7 +3987,7 @@
     "key": "g5_25",
     "name": "Retired grid / static MOD segment 186",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -3996,7 +3996,7 @@
     "key": "g5_26",
     "name": "Retired grid / static MOD segment 187",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4005,7 +4005,7 @@
     "key": "g5_27",
     "name": "Retired grid / static MOD segment 188",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4014,7 +4014,7 @@
     "key": "g5_28",
     "name": "Retired grid / static MOD segment 189",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4023,7 +4023,7 @@
     "key": "g5_29",
     "name": "Retired grid / static MOD segment 190",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4032,7 +4032,7 @@
     "key": "g5_30",
     "name": "Retired grid / static MOD segment 191",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4041,7 +4041,7 @@
     "key": "g5_31",
     "name": "Retired grid / static MOD segment 192",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4050,7 +4050,7 @@
     "key": "g6_0",
     "name": "Retired grid / static MOD segment 193",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4059,7 +4059,7 @@
     "key": "g6_1",
     "name": "Retired grid / static MOD segment 194",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4068,7 +4068,7 @@
     "key": "g6_2",
     "name": "Retired grid / static MOD segment 195",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4077,7 +4077,7 @@
     "key": "g6_3",
     "name": "Retired grid / static MOD segment 196",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4086,7 +4086,7 @@
     "key": "g6_4",
     "name": "Retired grid / static MOD segment 197",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4095,7 +4095,7 @@
     "key": "g6_5",
     "name": "Retired grid / static MOD segment 198",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4104,7 +4104,7 @@
     "key": "g6_6",
     "name": "Retired grid / static MOD segment 199",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4113,7 +4113,7 @@
     "key": "g6_7",
     "name": "Retired grid / static MOD segment 200",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4122,7 +4122,7 @@
     "key": "g6_8",
     "name": "Retired grid / static MOD segment 201",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4131,7 +4131,7 @@
     "key": "g6_9",
     "name": "Retired grid / static MOD segment 202",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4140,7 +4140,7 @@
     "key": "g6_10",
     "name": "Retired grid / static MOD segment 203",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4149,7 +4149,7 @@
     "key": "g6_11",
     "name": "Retired grid / static MOD segment 204",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4158,7 +4158,7 @@
     "key": "g6_12",
     "name": "Retired grid / static MOD segment 205",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4167,7 +4167,7 @@
     "key": "g6_13",
     "name": "Retired grid / static MOD segment 206",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4176,7 +4176,7 @@
     "key": "g6_14",
     "name": "Retired grid / static MOD segment 207",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4185,7 +4185,7 @@
     "key": "g6_15",
     "name": "Retired grid / static MOD segment 208",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4194,7 +4194,7 @@
     "key": "g6_16",
     "name": "Retired grid / static MOD segment 209",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4203,7 +4203,7 @@
     "key": "g6_17",
     "name": "Retired grid / static MOD segment 210",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4212,7 +4212,7 @@
     "key": "g6_18",
     "name": "Retired grid / static MOD segment 211",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4221,7 +4221,7 @@
     "key": "g6_19",
     "name": "Retired grid / static MOD segment 212",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4230,7 +4230,7 @@
     "key": "g6_20",
     "name": "Retired grid / static MOD segment 213",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4239,7 +4239,7 @@
     "key": "g6_21",
     "name": "Retired grid / static MOD segment 214",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4248,7 +4248,7 @@
     "key": "g6_22",
     "name": "Retired grid / static MOD segment 215",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4257,7 +4257,7 @@
     "key": "g6_23",
     "name": "Retired grid / static MOD segment 216",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4266,7 +4266,7 @@
     "key": "g6_24",
     "name": "Retired grid / static MOD segment 217",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4275,7 +4275,7 @@
     "key": "g6_25",
     "name": "Retired grid / static MOD segment 218",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4284,7 +4284,7 @@
     "key": "g6_26",
     "name": "Retired grid / static MOD segment 219",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4293,7 +4293,7 @@
     "key": "g6_27",
     "name": "Retired grid / static MOD segment 220",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4302,7 +4302,7 @@
     "key": "g6_28",
     "name": "Retired grid / static MOD segment 221",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4311,7 +4311,7 @@
     "key": "g6_29",
     "name": "Retired grid / static MOD segment 222",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4320,7 +4320,7 @@
     "key": "g6_30",
     "name": "Retired grid / static MOD segment 223",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4329,7 +4329,7 @@
     "key": "g6_31",
     "name": "Retired grid / static MOD segment 224",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4338,7 +4338,7 @@
     "key": "g7_0",
     "name": "Retired grid / static MOD segment 225",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4347,7 +4347,7 @@
     "key": "g7_1",
     "name": "Retired grid / static MOD segment 226",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4356,7 +4356,7 @@
     "key": "g7_2",
     "name": "Retired grid / static MOD segment 227",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4365,7 +4365,7 @@
     "key": "g7_3",
     "name": "Retired grid / static MOD segment 228",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4374,7 +4374,7 @@
     "key": "g7_4",
     "name": "Retired grid / static MOD segment 229",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4383,7 +4383,7 @@
     "key": "g7_5",
     "name": "Retired grid / static MOD segment 230",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4392,7 +4392,7 @@
     "key": "g7_6",
     "name": "Retired grid / static MOD segment 231",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4401,7 +4401,7 @@
     "key": "g7_7",
     "name": "Retired grid / static MOD segment 232",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4410,7 +4410,7 @@
     "key": "g7_8",
     "name": "Retired grid / static MOD segment 233",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4419,7 +4419,7 @@
     "key": "g7_9",
     "name": "Retired grid / static MOD segment 234",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4428,7 +4428,7 @@
     "key": "g7_10",
     "name": "Retired grid / static MOD segment 235",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4437,7 +4437,7 @@
     "key": "g7_11",
     "name": "Retired grid / static MOD segment 236",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4446,7 +4446,7 @@
     "key": "g7_12",
     "name": "Retired grid / static MOD segment 237",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4455,7 +4455,7 @@
     "key": "g7_13",
     "name": "Retired grid / static MOD segment 238",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4464,7 +4464,7 @@
     "key": "g7_14",
     "name": "Retired grid / static MOD segment 239",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4473,7 +4473,7 @@
     "key": "g7_15",
     "name": "Retired grid / static MOD segment 240",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4482,7 +4482,7 @@
     "key": "g7_16",
     "name": "Retired grid / static MOD segment 241",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4491,7 +4491,7 @@
     "key": "g7_17",
     "name": "Retired grid / static MOD segment 242",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4500,7 +4500,7 @@
     "key": "g7_18",
     "name": "Retired grid / static MOD segment 243",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4509,7 +4509,7 @@
     "key": "g7_19",
     "name": "Retired grid / static MOD segment 244",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4518,7 +4518,7 @@
     "key": "g7_20",
     "name": "Retired grid / static MOD segment 245",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4527,7 +4527,7 @@
     "key": "g7_21",
     "name": "Retired grid / static MOD segment 246",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4536,7 +4536,7 @@
     "key": "g7_22",
     "name": "Retired grid / static MOD segment 247",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4545,7 +4545,7 @@
     "key": "g7_23",
     "name": "Retired grid / static MOD segment 248",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4554,7 +4554,7 @@
     "key": "g7_24",
     "name": "Retired grid / static MOD segment 249",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4563,7 +4563,7 @@
     "key": "g7_25",
     "name": "Retired grid / static MOD segment 250",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4572,7 +4572,7 @@
     "key": "g7_26",
     "name": "Retired grid / static MOD segment 251",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4581,7 +4581,7 @@
     "key": "g7_27",
     "name": "Retired grid / static MOD segment 252",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4590,7 +4590,7 @@
     "key": "g7_28",
     "name": "Retired grid / static MOD segment 253",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4599,7 +4599,7 @@
     "key": "g7_29",
     "name": "Retired grid / static MOD segment 254",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4608,7 +4608,7 @@
     "key": "g7_30",
     "name": "Retired grid / static MOD segment 255",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -4617,7 +4617,7 @@
     "key": "g7_31",
     "name": "Retired grid / static MOD segment 256",
     "min": 0,
-    "max": 1023,
+    "max": 3071,
     "default": 528,
     "display": "int",
     "poll": false
@@ -33740,7 +33740,10 @@
       "SQUARE",
       "SAMPLE & HOLD",
       "RANDOM SMOOTH",
-      "FREE CURVE"
+      "FREE CURVE",
+      "RANDOM WALK",
+      "RANDOM LOOP",
+      "BOUNCE"
     ],
     "refresh_display": false
   },
@@ -33830,7 +33833,10 @@
       "GATE",
       "RATCHET",
       "DECAY",
-      "NOTE ON"
+      "NOTE ON",
+      "LFO 2 RATE",
+      "LFO 2 DEPTH",
+      "LFO 2 OFFSET"
     ],
     "refresh_display": false
   },
@@ -33851,7 +33857,7 @@
     "max": 100,
     "default": 0,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33861,7 +33867,7 @@
     "max": 100,
     "default": 71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33871,7 +33877,7 @@
     "max": 100,
     "default": 100,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33881,7 +33887,7 @@
     "max": 100,
     "default": 71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33891,7 +33897,7 @@
     "max": 100,
     "default": 0,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33901,7 +33907,7 @@
     "max": 100,
     "default": -71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33911,7 +33917,7 @@
     "max": 100,
     "default": -100,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33921,7 +33927,7 @@
     "max": 100,
     "default": -71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -33949,7 +33955,10 @@
       "SQUARE",
       "SAMPLE & HOLD",
       "RANDOM SMOOTH",
-      "FREE CURVE"
+      "FREE CURVE",
+      "RANDOM WALK",
+      "RANDOM LOOP",
+      "BOUNCE"
     ],
     "refresh_display": false
   },
@@ -34039,7 +34048,10 @@
       "GATE",
       "RATCHET",
       "DECAY",
-      "NOTE ON"
+      "NOTE ON",
+      "LFO 1 RATE",
+      "LFO 1 DEPTH",
+      "LFO 1 OFFSET"
     ],
     "refresh_display": false
   },
@@ -34060,7 +34072,7 @@
     "max": 100,
     "default": 0,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34070,7 +34082,7 @@
     "max": 100,
     "default": 71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34080,7 +34092,7 @@
     "max": 100,
     "default": 100,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34090,7 +34102,7 @@
     "max": 100,
     "default": 71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34100,7 +34112,7 @@
     "max": 100,
     "default": 0,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34110,7 +34122,7 @@
     "max": 100,
     "default": -71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34120,7 +34132,7 @@
     "max": 100,
     "default": -100,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {
@@ -34130,7 +34142,7 @@
     "max": 100,
     "default": -71,
     "display": "int",
-    "dynamic_display": false,
+    "dynamic_display": true,
     "refresh_display": false
   },
   {

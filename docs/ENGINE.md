@@ -57,6 +57,13 @@ Four slots each own two oscillators and one unique lane assignment. Disabled and
 
 ## Native value updates
 
-Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most 32 from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
+Engine changes are collected in batches of at most 32 per audio block. Pending host value notifications are coalesced and delivered with a round-robin cursor, at most eight from that queue per block. Pending values remain queued for subsequent blocks. MOD choices update native handles without requesting a global screen rebuild. This limits callback bursts without changing MIDI scheduling.
 
 Applied scale and root metadata are saved with the project. Newly saved states use a SCALE extension that older plugin versions cannot read; retain a project copy before downgrading.
+
+
+## Extended modulation and cached graphics
+
+The eleven control generators live in `src/mod_lfo.h` and `src/mod_extended.h`. `src/mod_chain.h` applies bounded previous-value cross modulation. `src/mod_preview_worker.h` computes static waveform previews from immutable snapshots on one dedicated worker, without MIDI or host callbacks. Completed results are cached, stale results rejected and requests coalesced to at most ten per second.
+
+The two track pages share a 128-frame miniature atlas with repeated state plateaus. Each passive miniature uses one native control. The MIX and NOTE ON paths remain independent of preview generation.

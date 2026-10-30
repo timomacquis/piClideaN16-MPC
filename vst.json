@@ -2,7 +2,7 @@
   "name": "\u03c0ClideaN MPC",
   "vendor": "Timo",
   "uid": "PiCN",
-  "version": 10205,
+  "version": 10300,
   "so": "piclidean_mpc.so",
   "params": "params.json",
   "custom_skin": true,
@@ -14,6 +14,7 @@
     "DISPLAY_REV_NO_UPDATE": 1,
     "PARAM_TEXT_MAX": 64,
     "PICN_HOST_CONTEXT": 1,
+    "PICN_NOTIFICATION_BUDGET": 8,
     "MPC_CHUNK_BYTES": 32768
   }
 }

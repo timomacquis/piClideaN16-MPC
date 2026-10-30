@@ -204,7 +204,10 @@ for i in range(32):
  k=local(f'pad_touch{i}',states,actions)
  c=placed(k,f'step_press{i}',x,y,w,h);parts.append(c)
 
-# TRACKS previews use small static tiles, never short filmstrips.
+# TRACKS: one passive 128-frame tile per step, shared across all 512 cells.
+# Frames retain exactly the previous static tile pixels and MIDI state indices.
+tiny_tiles=[]
+tiny_atlas=Image.new('RGB',(12,22*128),C['bg'])
 for state in range(9):
  # Miniature PATTERN tiles: preserve all nine existing state values and geometry.
  # Playback outlines the tile without hiding its note/custom colour.
@@ -217,7 +220,21 @@ for state in range(9):
  im,dr=image(12,22)
  rounded(dr,(1,3,10,18),fill=bg,outline=edge,radius=2)
  if head:rounded(dr,(0,2,11,19),outline=C['text'],radius=3)
- save(f'tiny_state{state}.png',im)
+ tiny_tiles.append(im)
+# Native numFrames is the frame COUNT here, not the last frame index.
+# Plateaus also tolerate floor/nearest rounding of normalized MIDI states.
+for frame in range(128):tiny_atlas.paste(tiny_tiles[round(frame*8/127)],(0,frame*22))
+save('track_states_128.png',tiny_atlas)
+tiny=child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='track_states_128.png',numFrames=128,invert=False,dragOrientation='Horizontal',handleName='Data'),0,0,12,22)
+tiny['bounds']['acceptsHWFocus']='No'
+tiny_kind=local('track_preview_tile',[tiny])
+def track_static_field(key,x,y,w,h,n=26):
+ # Q-Link owns editing; the identical 128 background frames carried no value.
+ fn=f'track_field_{w}_{h}.png'
+ if not (A/fn).exists():
+  im,d=image(w,h);rounded(d,(1,1,w-2,h-2),fill=C['panel'],outline='#727d81');save(fn,im)
+ kind=local(f'track_field_{key}',[art(fn,0,0,w,h),label(12,0,w-24,h,n)],[action('Q-Link')],focus=True)
+ return placed(kind,key,x,y,w,h)
 def track_mode_picker():
  fn='track_mode_pick.png';im,d=image(360,48);rounded(d,(1,1,358,46),fill=C['panel'],outline='#727d81');save(fn,im)
  kind=local('track_mode_picker',[art(fn,0,0,360,48),label(12,0,336,48,26,handle='Caption')],[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True)
@@ -235,10 +252,9 @@ for start in [0,8]:
    c['bounds']['additionalInvalidatingHandles']=[gate(f'line_on{i}',state,2)]
   tracks.append(selection)
   for j in range(32):
-   for state in range(9):
-    c=art(f'tiny_state{state}.png',154+j*15,y+10,12,22);c['bounds']['additionalInvalidatingHandles']=[gate(f'trackcell{i}_{j}',state,9)];tracks.append(c)
+   c=placed(tiny_kind,f'trackcell{i}_{j}',154+j*15,y+10,12,22);c['bounds']['acceptsHWFocus']='No';tracks.append(c)
   tracks += toggle(f'l{i}_mute','M',697,y,62,42)+toggle(f'l{i}_solo','S',775,y,62,42)
- tracks += [track_mode_picker(),*toggle('auto_rotate','AUTO ROTATE',880,190,360,46),field('auto_shift',880,292,168,48),field('auto_every',1070,292,170,48),readout('phase_offset',880,362,168,38,23),readout('phase_cycle',1070,362,170,38,23),button('reset_phase','RESET PHASE',880,430,360,48)]
+ tracks += [track_mode_picker(),*toggle('auto_rotate','AUTO ROTATE',880,190,360,46),track_static_field('auto_shift',880,292,168,48),track_static_field('auto_every',1070,292,170,48),readout('phase_offset',880,362,168,38,23),readout('phase_cycle',1070,362,170,38,23),button('reset_phase','RESET PHASE',880,430,360,48)]
  for key,x,title in [('phase_offset',880,'SHIFT'),('phase_cycle',1070,'CYCLE')]:
   item=next(c for c in tracks if c['componentData']['name']==key)
   width=math.ceil(font(19).getlength(title))
@@ -318,7 +334,7 @@ children=[]
 for assigned in range(17):
  im,d=image(260,48);rounded(d,(1,1,258,46),fill='#352329' if assigned else C['panel'],outline='#ffffff' if assigned else '#727d81');text(d,(130,24),f'A{assigned:02}' if assigned else 'NONE',24,C['red'] if assigned else C['text'],'mm');fn=f'mod_pad_{assigned}.png';save(fn,im);c=art(fn,0,0,260,48);c['bounds']['additionalInvalidatingHandles']=[gate('mod_pad',assigned,17)];children.append(c)
 kind=local('mod_pad_open',children,[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True);mod_parts.append(placed(kind,'open_rhythm',1000,20,260,48))
-im,dr=image(1280,550);dr.line((640,8,640,202),fill='#68736a');dr.line((640,382,640,520),fill='#68736a');save('mod_panel.png',im);mod_parts.append(art('mod_panel.png',0,78,1280,550))
+im,dr=image(1280,550);dr.line((640,8,640,152),fill='#68736a');dr.line((640,332,640,470),fill='#68736a');save('mod_panel.png',im);mod_parts.append(art('mod_panel.png',0,78,1280,550))
 def mod_slider(key,x,y,w=180,h=58):
  fn=f'mod_slider_{w}_{h}.png'
  if not (A/fn).exists():
@@ -327,41 +343,46 @@ def mod_slider(key,x,y,w=180,h=58):
    yy=v*h;d.rounded_rectangle((4,yy+11,w-5,yy+17),radius=3,fill='#464b4d');xx=7+int(v*(w-15)/127);d.line((7,yy+14,xx,yy+14),fill=C['amber_text'],width=5);d.ellipse((xx-5,yy+8,xx+5,yy+20),fill=C['amber_text'])
   save(fn,im)
  children=[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=fn,numFrames=127,invert=False,dragOrientation='Horizontal',handleName='Data'),0,0,w,h),label(8,28,w-16,h-28,18 if h<50 else 21)]
- return placed(local('slider_'+key,children,[action('Q-Link')],focus=True),key,x,y,w,h)
+ name=f'slider_{key}_{w}_{h}'
+ if not any(row['key']==name for row in defs):local(name,children,[action('Q-Link')],focus=True)
+ return placed(name,key,x,y,w,h)
 def mod_picker(key,pick,x,y,w,h,n=23):
  fn=f'mod_pick_{pick}.png';im,d=image(w,h);rounded(d,(1,1,w-2,h-2),fill=C['panel'],outline='#727d81');save(fn,im)
- children=[art(fn,0,0,w,h),label(14,0,w-28,h,n,handle='Caption')]
+ children=[art(fn,0,0,w,h)]
+ if pick%4==3:
+  active_fn=f'mod_pick_chain_{pick}.png';im,d=image(w,h);rounded(d,(1,1,w-2,h-2),fill='#302733',outline='#8d649a');save(active_fn,im)
+  for dest in [8,9,10]:
+   c=art(active_fn,0,0,w,h);c['bounds']['additionalInvalidatingHandles']=[gate(key,dest,11)];children.append(c)
+ children.append(label(14,0,w-28,h,n,handle='Caption'))
  kind=local(f'mod_pick_touch_{pick}',children,[action('Toggle Switch'),dict(action('Toggle Switch'),onAction='Enter Pressed')],focus=True)
  return placed(kind,f'open_sound{pick}',x,y,w,h,maps=[{'key':'Caption','value':f'Parameter {I[key]}'}])
 for j,x in [(0,20),(1,700)]:
- im,d=image(560,48);text(d,(16,10),f'LFO {j+1}',26);save(f'mod_header{j}.png',im);mod_parts.append(art(f'mod_header{j}.png',x,88,560,48));mod_parts+=toggle(f'mod{j}_on','ON',x+110,88,122,46)
- mod_parts.append(mod_picker(f'mod{j}_wave',j*4,x,153,560,44))
- im,d=image(560,116,C['oled']);
- for xx in [140,280,420]:d.line((xx,22,xx,115),fill='#2c4036')
- save(f'mod_plot{j}.png',im);mod_parts.append(art(f'mod_plot{j}.png',x,210,560,116));mod_parts.append(readout('mod_tempo',x+325,210,235,22,16))
+ im,d=image(560,46);text(d,(8,23),f'LFO {j+1}',24,anchor='lm');save(f'mod_header{j}.png',im);mod_parts.append(art(f'mod_header{j}.png',x,75,560,46));mod_parts+=toggle(f'mod{j}_on','ON',x+90,75,96,46)
+ mod_parts.append(mod_picker(f'mod{j}_wave',j*4,x+200,75,360,46))
+ im,d=image(560,96,C['oled']);
+ for xx in [140,280,420]:d.line((xx,22,xx,95),fill='#2c4036')
+ save(f'mod_plot{j}.png',im);mod_parts.append(art(f'mod_plot{j}.png',x,190,560,96));mod_parts.append(readout('mod_tempo',x+325,190,235,22,16))
  # Encoded endpoint pairs: a static segment can connect different levels,
  # unlike the old disconnected horizontal point markers. Shared filmstrips.
- for style in range(3):
-  fn=['mod_linear_segment.png','mod_steps_segment.png','mod_dense_segment.png'][style]
-  if not (A/fn).exists():
-   im=Image.new('RGB',(4,68*1024),C['oled']);d=ImageDraw.Draw(im)
-   for frame in range(1024):
-    a,b=divmod(frame,32);yy=frame*68;ya=yy+34-round((a/31*2-1)*29);yb=yy+34-round((b/31*2-1)*29);d.line((0,yy+34,3,yy+34),fill='#2c4036')
+ fn='mod_segment_atlas.png'
+ if not (A/fn).exists():
+  im=Image.new('RGB',(4,68*3072),C['oled']);d=ImageDraw.Draw(im)
+  for style in range(3):
+   for pair in range(1024):
+    a,b=divmod(pair,32);yy=(style*1024+pair)*68;ya=yy+34-round((a/31*2-1)*29);yb=yy+34-round((b/31*2-1)*29);d.line((0,yy+34,3,yy+34),fill='#2c4036')
     if style==2:d.rectangle((0,yb,3,ya) if yb<ya else (0,ya,3,yb),fill='#507981')
     elif style==1:d.line((0,ya,3,ya,3,yb),fill='#91c9df',width=2)
     else:d.line((0,ya,3,yb),fill='#91c9df',width=2)
-   save(fn,im)
+  save(fn,im)
  for k in range(128):
-  children=[]
-  for stepped in range(3):
-   c=child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=['mod_linear_segment.png','mod_steps_segment.png','mod_dense_segment.png'][stepped],numFrames=1023,invert=False,dragOrientation='Horizontal',handleName='Data'),0,0,4,68);c['bounds']['acceptsHWFocus']='No';c['bounds']['additionalInvalidatingHandles']=[gate(f'mod_stairs{j}',stepped,3)];children.append(c)
-  kind=local(f'mod_static_read{j}_{k}',children);c=placed(kind,f'g{j*4+k//32}_{k%32}',x+24+k*4,232,4,68);c['bounds']['acceptsHWFocus']='No';mod_parts.append(c)
+  c=child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=fn,numFrames=3071,invert=False,dragOrientation='Horizontal',handleName='Data'),0,0,4,68);c['bounds']['acceptsHWFocus']='No'
+  kind=local(f'mod_static_read{j}_{k}',[c]);c=placed(kind,f'g{j*4+k//32}_{k%32}',x+24+k*4,212,4,68);c['bounds']['acceptsHWFocus']='No';mod_parts.append(c)
  # Bar guides sit above opaque segment tiles and do not receive touches.
  if not (A/'mod_bar_guide.png').exists():
   im=Image.new('RGBA',(1,68),(0,0,0,0));d=ImageDraw.Draw(im)
   for gy in range(0,68,8):d.line((0,gy,0,min(gy+3,67)),fill='#384b42')
   save('mod_bar_guide.png',im)
- for gx in [128,256,384]:mod_parts.append(art('mod_bar_guide.png',x+24+gx,232,1,68))
+ for gx in [128,256,384]:mod_parts.append(art('mod_bar_guide.png',x+24+gx,212,1,68))
  # Threshold is one passive dotted line, split into reusable narrow tiles.
  if not (A/'mod_threshold_line.png').exists():
   im=Image.new('RGBA',(17,68*201),(0,0,0,0));d=ImageDraw.Draw(im)
@@ -370,14 +391,14 @@ for j,x in [(0,20),(1,700)]:
   save('mod_threshold_line.png',im)
  children=[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='mod_threshold_line.png',numFrames=200,invert=False,dragOrientation='Horizontal',handleName='Data'),k*17,0,17,68) for k in range(31)]
  for c in children:c['bounds']['acceptsHWFocus']='No'
- kind=local(f'threshold_overlay{j}',children);c=placed(kind,f'mod{j}_threshold',x+16,232,527,68,[gate(f'mod{j}_dest',7,8)]);c['bounds']['acceptsHWFocus']='No';mod_parts.append(c)
+ kind=local(f'threshold_overlay{j}',children);c=placed(kind,f'mod{j}_threshold',x+16,212,527,68,[gate(f'mod{j}_dest',7,11)]);c['bounds']['acceptsHWFocus']='No';mod_parts.append(c)
  mod_parts.append(mod_picker(f'mod{j}_sync',j*4+1,x,342,180,44));rate=mod_picker(f'mod{j}_rate',j*4+2,x+196,342,364,44);rate['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_sync',1,2)];mod_parts.append(rate)
  hz=mod_slider(f'mod{j}_hz',x+196,342,364,44);hz['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_sync',0,2)];mod_parts.append(hz)
  for k,(key,title) in enumerate([('depth','DEPTH'),('offset','OFFSET'),('phase','PHASE')]):
   xx=x+k*190;im,d=image(180,22);text(d,(0,0),title,18,C['muted']);fn=f'mod_label_{j}_{key}.png';save(fn,im);mod_parts += [art(fn,xx,401,180,22),mod_slider(f'mod{j}_{key}',xx,426)]
  im,d=image(560,22);text(d,(0,0),'DESTINATION',18,C['muted']);save(f'mod_destination{j}.png',im);mod_parts += [art(f'mod_destination{j}.png',x,490,560,22),mod_picker(f'mod{j}_dest',j*4+3,x,516,560,44)]
- threshold=mod_slider(f'mod{j}_threshold',x+196,572,180,50);threshold['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,8)];mod_parts.append(threshold)
- im,d=image(180,30);text(d,(0,4),'THRESHOLD',18,C['muted']);save(f'mod_threshold{j}.png',im);c=art(f'mod_threshold{j}.png',x,576,180,30);c['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,8)];mod_parts.append(c)
+ threshold=mod_slider(f'mod{j}_threshold',x+196,572,180,50);threshold['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,11)];mod_parts.append(threshold)
+ im,d=image(180,30);text(d,(0,4),'THRESHOLD',18,C['muted']);save(f'mod_threshold{j}.png',im);c=art(f'mod_threshold{j}.png',x,576,180,30);c['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_dest',7,11)];mod_parts.append(c)
  # Eight vertical faders replace the unintelligible numeric point buttons.
  fn='mod_curve_fader.png'
  if not (A/fn).exists():
@@ -387,11 +408,34 @@ for j,x in [(0,20),(1,700)]:
   save(fn,im)
  for k in range(8):
   children=[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip=fn,numFrames=127,invert=False,dragOrientation='Vertical',handleName='Data'),0,0,66,40),label(30,7,35,25,17)]
-  kind=local(f'free_point_slider{j}_{k}',children,[action('Q-Link')],focus=True);c=placed(kind,f'mod{j}_c{k}',x+k*70,300,66,40,[gate(f'mod{j}_wave',7,8)]);mod_parts.append(c)
+  kind=local(f'free_point_slider{j}_{k}',children,[action('Q-Link')],focus=True);c=placed(kind,f'mod{j}_c{k}',x+k*70,282,66,40,[gate(f'mod{j}_wave',7,11)]);mod_parts.append(c)
 # Small MIX dial, passive value only; no second slider or animated meter.
+# Shape-specific controls reuse contextual curve handles; FREE CURVE points
+# remain separately stored. No new parameter indices or animated readouts.
+for j,x in [(0,20),(1,700)]:
+ for wave,names in [(4,['WIDTH']),(8,['STEP SIZE']),(9,['LENGTH','EVOLVE']),(10,['GRAVITY','BOUNCE'])]:
+  for k,title in enumerate(names):
+   xx=x+k*280;im,d=image(260,22);text(d,(0,0),title,16,C['muted']);fn=f'mod_extra_{j}_{wave}_{k}.png';save(fn,im)
+   for c in [art(fn,xx,282,260,22),mod_slider(f'mod{j}_c{k}',xx,306,260,44)]:
+    c['bounds']['additionalInvalidatingHandles']=[gate(f'mod{j}_wave',wave,11)];mod_parts.append(c)
+# Move rate fields below contextual controls, retaining the static graph and
+# THRESHOLD. Standard forms use the same layout to avoid moving touch targets.
+for c in mod_parts:
+ rect=list(map(int,c['bounds']['bounds'].split()))
+ if rect[1]==342:rect[1]=352;c['bounds']['bounds']=' '.join(map(str,rect))
+# Passive small round marker on a parameter receiving the other LFO.
+for j,x in [(0,20),(1,700)]:
+ for dest,xx,yy in [(8,x+540,358),(9,x+166,405),(10,x+356,405)]:
+  im=Image.new('RGBA',(8,8),(0,0,0,0));ImageDraw.Draw(im).ellipse((2,2,5,5),fill=C['text']);fn=f'mod_chain_dot_{j}_{dest}.png';save(fn,im)
+  c=art(fn,xx,yy,8,8);c['bounds']['additionalInvalidatingHandles']=[gate(f'mod{1-j}_on',1,2),gate(f'mod{1-j}_dest',dest,11)];mod_parts.append(c)
 im,d=image(72,28);text(d,(36,14),'MIX',20,anchor='mm');save('mod_mix_title.png',im);mod_parts.append(art('mod_mix_title.png',604,298,72,28))
 kind=local('mod_mix_dial',[child('Knob',dict(version=5,knobType='FilmStrip',filmStrip='dial.png',numFrames=127,invert=False,dragOrientation='Vertical',handleName='Data'),0,0,58,58)],[action('Q-Link')],focus=True)
 mod_parts += [placed(kind,'mod_mix',611,330,58,58),readout('mod_mix',619,396,48,28,22)]
+# One header row saves 50 native pixels on both sides. Move every lower
+# control together, preserving spacing, hit regions, centre line and MIX axis.
+for c in mod_parts:
+ rect=list(map(int,c['bounds']['bounds'].split()))
+ if rect[1]>=130:rect[1]-=50;c['bounds']['bounds']=' '.join(map(str,rect))
 for c in mod_parts:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',0,7))
 cs=overlay(6,'SELECT PAD')
 for i in range(16):
@@ -412,16 +456,16 @@ confirmation=overlay(4,'This will randomize all the patterns')
 confirmation += [button('apply_rhythm','APPLY',370,320,240,56,native_touch=True),button('close','CANCEL',670,320,240,56,native_touch=True)]
 for c in confirmation:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',4,7));parts.append(c)
 # Eight contextual panels share one read-only context handle and one selection.
-mod_lists=[next(p['options'] for p in P if p['key']=='mod0_'+name) for name in ['wave','sync','rate','dest']]
+mod_lists=[[next(p['options'] for p in P if p['key']==f'mod{j}_'+name) for name in ['wave','sync','rate','dest']] for j in range(2)]
 for pick in range(8):
  title=['WAVEFORM','CLOCK MODE','RATE','DESTINATION'][pick%4]
  panel=overlay(20+pick,title)
- options=mod_lists[pick%4]
- for option,name in enumerate(options):panel.append(button('map_sound',name,80+(option%4)*282,190+(option//4)*90,268,64,False,option,8,tag=f'mod_choice_{pick}_{option}'))
- panel.append(button('close','CANCEL',530,450,220,52,native_touch=True))
+ options=mod_lists[pick//4][pick%4]
+ for option,name in enumerate(options):panel.append(button('map_sound',name,80+(option%4)*282,190+(option//4)*90,268,64,False,option,11,tag=f'mod_choice_{pick}_{option}'))
+ panel.append(button('close','CANCEL',530,510,220,52,native_touch=True))
  for c in panel:c['bounds']['additionalInvalidatingHandles'] += [gate('dialog',2,7),gate('can_undo',pick,8)];mod_parts.append(c)
 mode_panel=overlay(3,'PLAYBACK MODE')
-for option,name in enumerate(['FWD','REV','PEND1','PEND2','URN']):mode_panel.append(button('map_sound',name,110+option*214,240,196,64,False,option,8,tag=f'play_mode_choice{option}'))
+for option,name in enumerate(['FWD','REV','PEND1','PEND2','URN']):mode_panel.append(button('map_sound',name,110+option*214,240,196,64,False,option,11,tag=f'play_mode_choice{option}'))
 mode_panel.append(button('close','CANCEL',530,420,220,52,native_touch=True))
 for page in track_pages:
  for c in page:c['bounds']['additionalInvalidatingHandles'].append(gate('dialog',0,7))
@@ -434,6 +478,23 @@ for name,children in pages:
   if x<0 or y<0 or w<=0 or h<=0 or x+w>1280 or y+h>628:raise ValueError('Control outside native content: '+control['componentData']['name'])
  local(name,children)
 D['tabs']=[dict(version=3,tabName=name,fnKeyIndex=i,fnKeySubIndex=0,qlinkBoundsData=['0 0 0 0'],componentName=name,initialSize='0 0 1280 628',scale=1.) for i,(name,_) in enumerate(pages)]
+# Identical images share one filename and therefore one host image-cache key.
+image_by_hash={};aliases={};saved_bytes=0
+for path in sorted(A.glob('*.png')):
+ data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
+ if digest in image_by_hash:
+  aliases[path.name]=image_by_hash[digest];saved_bytes+=len(data)
+ else:image_by_hash[digest]=path.name
+def share_images(value):
+ if isinstance(value,dict):
+  for key,item in value.items():
+   if key in ('image','onImage','offImage','filmStrip') and isinstance(item,str) and item in aliases:value[key]=aliases[item]
+   else:share_images(item)
+ elif isinstance(value,list):
+  for item in value:share_images(item)
+share_images(J)
+for alias in aliases:(A/alias).unlink()
+print('Image cache deduplication:',len(aliases),'duplicate files;',saved_bytes,'compressed bytes removed')
 (A/'TUI.json').write_text(json.dumps(J,indent=2)+'\n')
 for filename in ['Q-Links.json','Q-Links - 8by1.json']:
  q=json.loads(z.read('Plugin Skins/'+filename));template=q['Screen Mode Q-Links']['map'][0];rows=[]
